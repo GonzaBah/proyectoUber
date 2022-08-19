@@ -1,0 +1,54 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-back-button></ion-back-button>
+    </ion-buttons>
+    <ion-title>Registrar</ion-title>
+    
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <ion-list lines="full" class="ion-no-margin">
+    <ion-item>
+      <ion-label>Nombre</ion-label>
+      <ion-input placeholder="Ingresar Nombre" type="text"></ion-input>
+    </ion-item>
+    <ion-item>
+      <ion-label>Apellido</ion-label>
+      <ion-input placeholder="Ingresar Apellido" type="text"></ion-input>
+    </ion-item>
+    <ion-item>
+      <ion-label>RUT</ion-label>
+      <ion-input placeholder="Sin punto con guion" type="text"></ion-input>
+    </ion-item>
+    <ion-item>
+      <ion-label>Fecha de Nacimiento</ion-label>
+    </ion-item>
+    <ion-item>
+      <ion-datetime-button datetime="datetime"></ion-datetime-button>
+    </ion-item>
+    <ion-item>
+      <ion-label>Correo</ion-label>
+      <ion-input placeholder="Ingresar Correo" type="email"></ion-input>
+    </ion-item>
+    <ion-item>
+      <ion-label>Teléfono +56</ion-label>
+      <ion-input type="number"></ion-input>
+    </ion-item>
+  </ion-list>
+  <center>
+    <ion-button [routerLink]= "['/pagina2']">Registrar</ion-button>
+  </center>
+  
+  <!-- Modal del Calendario -->
+  <ion-modal [keepContentsMounted]="true">
+    <ng-template>
+      <ion-datetime 
+        [showDefaultButtons]="true" 
+        doneText="Aceptar"
+        cancelText="Cancelar"
+        presentation="date" id="datetime"></ion-datetime>
+    </ng-template>
+  </ion-modal>
+</ion-content>
