@@ -1,0 +1,64 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-title></ion-title>
+    <ion-buttons slot="start">
+      <ion-back-button></ion-back-button>
+    </ion-buttons>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <div class="header">
+    <div class="avatar">
+      <ion-img src="assets\images\noperfil.jpg" class="fotoperfil"></ion-img>
+      
+    </div>
+    <h5 style="margin-right: 5px;">Pepito Fuentes</h5>
+    <ion-icon [routerLink]="['/editar-cuenta']"  style="cursor: pointer;" size="small" name="create-outline"></ion-icon>
+  </div>
+
+  <div class="categories">
+    <div class="wrapper">
+      <div class="image-card">
+        <ion-img src="assets\images\billetera3.jpg"></ion-img>
+      </div>
+      <p class="ion-no-margin">Pagos</p>
+      
+    </div>
+    <div class="wrapper">
+      <div class="image-card">
+        <ion-img src="assets\images\historial.jpg"></ion-img>
+      </div>
+      <p class="ion-no-margin">Historial</p>
+      
+    </div>   
+
+    <div class="wrapper" [routerLink]="['/pagina-principal']">
+      <div class="image-card">
+        <ion-img src="assets\images\auto2.png"></ion-img>
+      </div>
+      <p class="ion-no-margin">Auto</p>
+      
+    </div>   
+    
+  </div>
+  <hr>
+
+  <div class="section">
+    <div class="section1">
+      <ion-icon style="margin-top: 6%; margin-right: 4px;" size="small" name="cog-outline"></ion-icon>
+      <h6 [routerLink]="['/configuracion']">Configuración</h6>
+    </div>
+    <div class="section1">
+      <ion-icon style="margin-top: 6%; margin-right: 4px;" size="small" name="car-outline"></ion-icon>
+      <h6>Ser afiliado UwUber</h6>
+    </div>
+
+    <div class="section1">
+      <ion-icon style="margin-top: 6%; margin-right: 4px;" size="small" name="help-circle-outline"></ion-icon>
+      <h6>Términos y condiciones</h6>
+    </div>
+    
+  </div>
+
+</ion-content>

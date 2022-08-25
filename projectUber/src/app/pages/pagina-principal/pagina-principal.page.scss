@@ -1,0 +1,41 @@
+ion-content{
+    --ion-background-color:#ffffff;
+    
+
+    .card{
+       --ion-background-color: #3AAFA9;
+       :hover{
+        background-color: rgb(220, 220, 220);
+       }
+
+       cursor: pointer;  
+    }
+    .foto{
+        width: 35px;
+        height: 25px;
+        border-radius: 90%;
+        justify-content: center;
+        overflow: hidden;
+        
+        
+    }
+    /*ion-img{
+        width: 90%;
+        height: 90%;
+    }*/
+
+    .my-custom-menu {
+        --width: 500px;
+      }
+
+    .fotomapa{
+        cursor: pointer;
+        border-radius: 2%;
+        overflow: hidden;
+    }
+
+    
+
+
+    
+}
