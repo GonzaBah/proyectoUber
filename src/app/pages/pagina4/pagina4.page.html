@@ -1,13 +1,22 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-back-button></ion-back-button>
+    </ion-buttons>
+    <ion-title>Vehiculo</ion-title>
+    
+  </ion-toolbar>
+</ion-header>
+
 <ion-content>
   
   <ion-list lines="full" class="ion-no-margin">
-    <ion-label>Agrega un vehículo para registrarte como conductor</ion-label>
+    <ion-card class="card1">
+      <ion-label>Agrega un vehículo para registrarte como conductor</ion-label>
+    </ion-card>
     <ion-card>
       <ion-card-content>
-        <ion-item style="margin-top: -25px">
-          <ion-label position="floating">Modelo</ion-label>
-          <ion-input type="text"></ion-input>
-        </ion-item>
+        <ion-input placeholder="Modelo" type="text"></ion-input>
       </ion-card-content>
     </ion-card>
     <ion-card lines="full" class="ion-no.margin">
@@ -15,9 +24,26 @@
         <ion-input placeholder="Marca" type="text"></ion-input>
       </ion-card-content>
     </ion-card>
+    <ion-card lines="full" class="ion-no.margin">
+      <ion-card-content>
+        <ion-input placeholder="Patente" type="text"></ion-input>
+      </ion-card-content>
+    </ion-card>
   </ion-list>
+  
   <center>
-    <ion-button shape="round" [routerLink]= "['/pagina2']">Registrar Vehiculo</ion-button>
+    <ion-row>
+      <ion-col>
+        <ion-checkbox></ion-checkbox>
+      </ion-col>
+      <ion-col size="10">
+        <ion-label>Aceptar los <a href="">Lineamiento de Conductor</a></ion-label>
+      </ion-col>
+    </ion-row>
+    
+    
+    <br>  
+    <ion-button shape="round" (click)="presentAlert()" [routerLink]= "['/pagina2']">Registrar Vehiculo</ion-button>
   </center>
   
 </ion-content>

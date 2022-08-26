@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { AlertController } from '@ionic/angular';
 
 @Component({
   selector: 'app-pagina4',
@@ -7,9 +8,18 @@ import { Component, OnInit } from '@angular/core';
 })
 export class Pagina4Page implements OnInit {
 
-  constructor() { }
+  constructor(private alertController: AlertController) { }
 
   ngOnInit() {
   }
+  async presentAlert() {
+    const alert = await this.alertController.create({
+      header: '¡Éxito!',
+      subHeader: '¡Vehículo registrado!',
+      message: 'Bienvenido conductor UwUber',
+      buttons: ['Continuar'],
+    });
 
+    await alert.present();
+  }
 }
