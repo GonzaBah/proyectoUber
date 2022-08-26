@@ -1,0 +1,34 @@
+<ion-content [fullscreen]="true" scroll-y="false">
+  <!--Modulo de Slide-->
+  <ion-slides pager="true">
+    <ion-slide>
+      <div class="slide">
+        <img src="../../../assets/car.svg"/>
+        <h2>Ser afiliado UwUber</h2>
+        <p>
+          <b>¿Quieres convertirte en Conductor oficial de UwUber?</b> ¡Enhorabuena! Estamos
+          buscando conductores
+          
+        </p>
+        <ion-icon slot="center" name="arrow-forward"></ion-icon>
+      </div>
+    </ion-slide>
+
+    <ion-slide>
+      <img src="../../../assets/alert-circle.svg" />
+      <h2>¡Importante!</h2>
+      <p>
+        Recuerda que como conductor debes seguir los <a href="">lineamientos de conductores UwUber</a>
+        para mantener el respeto y buen trato de los pasajeros.
+      </p>
+      <ion-icon slot="center" name="arrow-forward"></ion-icon>
+    </ion-slide>
+
+    <ion-slide>
+      <img src="../../../assets/checkmark.svg" />
+      <h2>¿Estás listo?</h2>
+      <ion-button fill="clear" [routerLink]="['/pagina4']">Empezar <ion-icon slot="end" name="arrow-forward"></ion-icon></ion-button>
+    </ion-slide>
+  </ion-slides>
+  <!--Fin del modulo de Slide-->
+</ion-content>
