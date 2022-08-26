@@ -1,0 +1,49 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-title>Registrarse</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <ion-list lines="full" class="ion-no-margin">
+    <ion-card>
+      <ion-card-content>
+        <ion-input placeholder="Nombre Apellido" type="text"></ion-input>
+      </ion-card-content>
+    </ion-card>
+    <ion-card style="margin: 15px auto" class="card-center">
+      <ion-card-content>
+        <ion-input placeholder="RUT sin puntos con guion" type="text"></ion-input>
+      </ion-card-content>
+    </ion-card>
+    <ion-card style="max-width: 59%;" class="card-center">
+      <ion-card-content>
+        <ion-datetime-button style="margin-top: -5px; margin-bottom: -5px;" datetime="datetime"></ion-datetime-button>
+      </ion-card-content>
+    </ion-card>
+    <ion-card>
+      <ion-card-content>
+        <ion-input placeholder="Correo" type="email"></ion-input>
+      </ion-card-content>
+    </ion-card>
+    <ion-card>
+      <ion-card-content>
+        <ion-input placeholder="Teléfono" type="number"></ion-input>
+      </ion-card-content>
+    </ion-card>
+  </ion-list>
+  <center>
+    <ion-button shape="round" [routerLink]= "['/principal']">Registrarse</ion-button>
+  </center>
+  
+  <!-- Modal del Calendario -->
+  <ion-modal [keepContentsMounted]="true">
+    <ng-template>
+      <ion-datetime 
+        [showDefaultButtons]="true" 
+        doneText="Aceptar"
+        cancelText="Cancelar"
+        presentation="date" id="datetime"></ion-datetime>
+    </ng-template>
+  </ion-modal>
+</ion-content>
