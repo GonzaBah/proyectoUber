@@ -11,7 +11,30 @@ const routes: Routes = [
     redirectTo: 'home',
     pathMatch: 'full'
   },
+<<<<<<< Updated upstream
 ];
+=======
+  {
+    path: 'reservar',
+    loadChildren: () => import('./pages/reservar/reservar.module').then( m => m.ReservarPageModule)
+  },
+  {
+    path: 'reservar2',
+    loadChildren: () => import('./pages/reservar2/reservar2.module').then( m => m.Reservar2PageModule)
+  },
+  {
+    path: 'billetera',
+    loadChildren: () => import('./pages/billetera/billetera.module').then( m => m.BilleteraPageModule)
+  },
+  {
+    path: 'historial',
+    loadChildren: () => import('./pages/historial/historial.module').then( m => m.HistorialPageModule)
+  },
+  {
+    path: 'viajes',
+    loadChildren: () => import('./pages/viajes/viajes.module').then( m => m.ViajesPageModule)
+  },
+>>>>>>> Stashed changes
 
 @NgModule({
   imports: [
