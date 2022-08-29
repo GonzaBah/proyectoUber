@@ -1,3 +1,4 @@
+
 import { NgModule } from '@angular/core';
 import { PreloadAllModules, RouterModule, Routes } from '@angular/router';
 
@@ -26,7 +27,8 @@ const routes: Routes = [
   {
     path: 'editar-cuenta',
     loadChildren: () => import('./pages/editar-cuenta/editar-cuenta.module').then( m => m.EditarCuentaPageModule)
-  },  {
+  },
+  {
     path: 'ser-afiliado',
     loadChildren: () => import('./pages/ser-afiliado/ser-afiliado.module').then( m => m.SerAfiliadoPageModule)
   },
@@ -38,7 +40,26 @@ const routes: Routes = [
     path: 'reg-vehiculo',
     loadChildren: () => import('./pages/reg-vehiculo/reg-vehiculo.module').then( m => m.RegVehiculoPageModule)
   },
-
+  {
+    path: 'reservar',
+    loadChildren: () => import('./pages/reservar/reservar.module').then( m => m.ReservarPageModule)
+  },
+  {
+    path: 'reservar2',
+    loadChildren: () => import('./pages/reservar2/reservar2.module').then( m => m.Reservar2PageModule)
+  },
+  {
+    path: 'billetera',
+    loadChildren: () => import('./pages/billetera/billetera.module').then( m => m.BilleteraPageModule)
+  },
+  {
+    path: 'historial',
+    loadChildren: () => import('./pages/historial/historial.module').then( m => m.HistorialPageModule)
+  },
+  {
+    path: 'viajes',
+    loadChildren: () => import('./pages/viajes/viajes.module').then( m => m.ViajesPageModule)
+  },
 
 
 ];
@@ -50,3 +71,5 @@ const routes: Routes = [
   exports: [RouterModule]
 })
 export class AppRoutingModule { }
+
+
