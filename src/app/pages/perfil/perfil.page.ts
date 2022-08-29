@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { ActivatedRoute, NavigationExtras, Router } from '@angular/router';
+import { MenuController } from '@ionic/angular';
 import { Category } from 'src/app/models/category.model';
 
 @Component({
@@ -9,10 +11,39 @@ import { Category } from 'src/app/models/category.model';
 export class PerfilPage implements OnInit {
   categories: Category[] = [];
 
-  constructor() { }
+  u: string = "";
+  p: string = "";
+  a: boolean = false;
+  n: string = "";
+  f: string = "";
+
+  constructor(private router: Router, private activedRouter: ActivatedRoute) {
+    this.activedRouter.queryParams.subscribe(params =>{
+      if(this.router.getCurrentNavigation().extras.state){
+        this.u = this.router.getCurrentNavigation().extras.state.user;
+        this.p = this.router.getCurrentNavigation().extras.state.pass;
+        this.a = this.router.getCurrentNavigation().extras.state.afil;
+        this.n = this.router.getCurrentNavigation().extras.state.name;
+        this.f = this.router.getCurrentNavigation().extras.state.fono;
+      }
+    })
+   }
 
   ngOnInit() {
     this.getCategories();
+  }
+
+  editarPerfil(){
+    let navigationExtras: NavigationExtras = {
+      state: {
+        user: this.u,
+        pass: this.p,
+        afil: this.a,
+        name: this.n,
+        fono: this.f
+      }
+    }
+    this.router.navigate(['/editar-cuenta'], navigationExtras);
   }
 
   getCategories(){
@@ -33,7 +64,7 @@ export class PerfilPage implements OnInit {
         id: 3,
         label:'Fumo?',
         image: 'assets/images/auto.jpg',
-        active:false,
+        active:true,
       },
     ];
   }

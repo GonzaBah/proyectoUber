@@ -15,10 +15,10 @@
 
   <div id="container">
     <ion-card>
-      <ion-input type="email" placeholder="Correo"></ion-input>
+      <ion-input [(ngModel)] = "usuario" type="email" placeholder="Correo"></ion-input>
     </ion-card>
     <ion-card style="margin-bottom: 0px;">
-      <ion-input type="password" placeholder="Contraseña"></ion-input>
+      <ion-input [(ngModel)] = "contrasenia" type="password" placeholder="Contraseña"></ion-input>
     </ion-card>
 
         <ion-grid>
@@ -36,7 +36,7 @@
             <a style="font-size: small; font-family:'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif ;" [routerLink] = "['/registrarse']">Registrarse</a>
           </div>
           <div style='float: right; margin-right: 10px;'>
-            <ion-button style="font-size: 90%;" size="default" [routerLink] = "['/principal']">Enviar</ion-button>
+            <ion-button style="font-size: 90%;" size="default" (click) = "login()">Enviar</ion-button>
           </div>
         </div>
       

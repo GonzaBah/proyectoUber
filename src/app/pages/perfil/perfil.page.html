@@ -13,8 +13,8 @@
       <ion-img src="assets\images\noperfil.jpg" class="fotoperfil"></ion-img>
       
     </div>
-    <h5 style="margin-right: 5px;">Pepito Fuentes</h5>
-    <ion-icon [routerLink]="['/editar-cuenta']"  style="cursor: pointer;" size="small" name="create-outline"></ion-icon>
+    <h5 style="margin-right: 5px;">{{ n }}</h5>
+    <ion-icon (click)="editarPerfil()" style="cursor: pointer;" size="small" name="create-outline"></ion-icon>
   </div>
 
   <div class="categories">
@@ -33,7 +33,7 @@
       
     </div>   
 
-    <div class="wrapper" [routerLink]="['/pagina-principal']">
+    <div class="wrapper" *ngIf = "a == 1" [routerLink]="['/pagina-principal']">
       <div class="image-card">
         <ion-img src="assets\images\auto2.png"></ion-img>
       </div>
@@ -51,7 +51,7 @@
     </div>
     <div class="section1">
       <ion-icon style="margin-top: 6%; margin-right: 4px;" size="small" name="car-outline"></ion-icon>
-      <a [routerLink] = "['/ser-afiliado']"><h6>Ser afiliado UwUber</h6></a>
+      <h6 [routerLink] = "['/ser-afiliado']">Ser afiliado UwUber</h6>
     </div>
 
     <div class="section1">
