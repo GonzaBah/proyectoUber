@@ -18,20 +18,20 @@
   </div>
 
   <div class="categories">
-    <div class="wrapper">
+    <div class="wrapper" [routerLink]="['/billetera']">
       <div class="image-card">
         <ion-img src="assets\images\billetera3.jpg"></ion-img>
       </div>
       <p class="ion-no-margin">Pagos</p>
       
     </div>
-    <div class="wrapper">
+    <div class="wrapper" [routerLink]="['/historial']">
       <div class="image-card">
         <ion-img src="assets\images\historial.jpg"></ion-img>
       </div>
       <p class="ion-no-margin">Historial</p>
       
-    </div>   
+    </div>
 
     <div class="wrapper" *ngIf = "a == 1" [routerLink]="['/pagina-principal']">
       <div class="image-card">

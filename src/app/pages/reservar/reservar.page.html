@@ -1,0 +1,37 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-title></ion-title>
+    <ion-buttons slot="start">
+      <ion-back-button></ion-back-button>
+    </ion-buttons>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <div class="contenido1">
+    <ion-item>      
+      <ion-input placeholder="Desde"></ion-input>
+    </ion-item>
+  </div>
+  <div class="contenido1">
+    <ion-item>      
+      <ion-input placeholder="Hacia"></ion-input>
+    </ion-item>
+  </div>
+
+  <div class="imagen">
+    <img src="assets\images\mapa.jpg" style="max-height: 100%;" class="fotomapa"><img>
+  </div>
+
+  
+  <ion-fab vertical="bottom" horizontal="end" slot="fixed">
+    <ion-fab-button [routerLink]="['/reservar2']" color="light" size="small">
+      <ion-icon name="arrow-forward-sharp"></ion-icon>
+    </ion-fab-button> 
+  </ion-fab>
+
+
+
+  
+
+</ion-content>
