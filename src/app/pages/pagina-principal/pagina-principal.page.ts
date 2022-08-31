@@ -15,6 +15,8 @@ export class PaginaPrincipalPage implements OnInit {
   a: boolean = false;
   n: string = "";
   f: string = "";
+  r: string = "";
+  fe: string = "";
   
   constructor(private menuController: MenuController, private router: Router, private activedRouter: ActivatedRoute) {
     this.activedRouter.queryParams.subscribe(params =>{
@@ -24,6 +26,8 @@ export class PaginaPrincipalPage implements OnInit {
         this.a = this.router.getCurrentNavigation().extras.state.afil;
         this.n = this.router.getCurrentNavigation().extras.state.name;
         this.f = this.router.getCurrentNavigation().extras.state.fono;
+        this.r = this.router.getCurrentNavigation().extras.state.rut;
+        this.fe = this.router.getCurrentNavigation().extras.state.fech;
       }
     })
    }
@@ -41,7 +45,9 @@ export class PaginaPrincipalPage implements OnInit {
         pass: this.p,
         afil: this.a,
         name: this.n,
-        fono: this.f
+        fono: this.f,
+        rut: this.r,
+        fech: this.fe
       }
     }
     this.router.navigate(['/perfil'], navigationExtras);

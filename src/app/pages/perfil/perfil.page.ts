@@ -16,6 +16,8 @@ export class PerfilPage implements OnInit {
   a: boolean = false;
   n: string = "";
   f: string = "";
+  r: string = "";
+  fe: string = "01-01";
 
   constructor(private router: Router, private activedRouter: ActivatedRoute) {
     this.activedRouter.queryParams.subscribe(params =>{
@@ -25,6 +27,7 @@ export class PerfilPage implements OnInit {
         this.a = this.router.getCurrentNavigation().extras.state.afil;
         this.n = this.router.getCurrentNavigation().extras.state.name;
         this.f = this.router.getCurrentNavigation().extras.state.fono;
+        this.r = this.router.getCurrentNavigation().extras.state.rut;
       }
     })
    }

@@ -8,6 +8,9 @@
   <ion-header>
     <ion-toolbar [translucent] = "true">
       <ion-title>Menu de Conductor</ion-title>
+      <ion-buttons slot="start">
+        <ion-back-button></ion-back-button>
+      </ion-buttons>
     </ion-toolbar>
   </ion-header>
   <ion-content>
@@ -17,8 +20,8 @@
         <ion-label>Generar Viaje</ion-label>
       </ion-item>
       <ion-item>
-        <ion-icon name="people"></ion-icon>
-        <ion-label>Asientos Disponibles</ion-label>
+        <ion-icon name="people" slot="start"></ion-icon>
+        <ion-label [routerLink]="['/asientos']">Asientos</ion-label>
       </ion-item>
       <ion-item>
         <ion-icon name="map"></ion-icon>
@@ -27,10 +30,6 @@
       <ion-item>
         <ion-icon name="card"></ion-icon>
         <ion-label>Realizar Pago</ion-label>
-      </ion-item>
-      <ion-item>
-        <ion-icon name="exit"></ion-icon>
-        <h6 (click) = "closeMenu()">Salir</h6>
       </ion-item>
     </ion-list>
   </ion-content>
@@ -53,7 +52,7 @@
         <ion-col size="12">
 
           <div class="card" style='width: 70%; height: 65%;'>
-            <ion-card (click)="cardClick()">
+            <ion-card (click)="cardClick()" [routerLink] = "['/viajes']">
               <ion-card-header style="padding-bottom: 0px; padding-top: 10px; text-align: end;">
                 <ion-card-subtitle></ion-card-subtitle>
                 <ion-card-title
@@ -75,7 +74,7 @@
         <ion-col size="12">
 
           <div class="card" style='width: 70%; height: 65%; float:right;'>
-            <ion-card (click)="cardClick()">
+            <ion-card (click)="cardClick()" [routerLink] = "['/reservar']">
               <ion-card-header style="padding-bottom: 0px; padding-top: 10px; padding-right: 50px;">
                 <ion-card-subtitle></ion-card-subtitle>
                 <ion-card-title

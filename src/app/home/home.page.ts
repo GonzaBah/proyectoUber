@@ -9,21 +9,22 @@ import { AlertController, ToastController } from '@ionic/angular';
 })
 export class HomePage {
   //Usuarios predefinidos
-  usuario1: string[] = ["user@mail.com", "1234", "0", "User Name", "+12345678"];
-  usuario2: string[] = ["chimba@rongo.com", "chimba", "1", "Chimba Rongo", "+569 Peor es Nada"];
+  usuario1: any[] = ["user@mail.com", "1234", false, "User Name", "+12345678", "111-1", "01-20"];
+  usuario2: any[] = ["chimba@rongo.com", "chimba", true, "Chimba Rongo", "+569 Peor es Nada", "222-2", "02-20"];
   
   usuario: string = "";
   contrasenia: string = "";
   afilState: boolean = false;
   nombre: string = "";
   telefono: string = "";
+  rut: string = "";
 
   constructor(public toastController: ToastController, private router: Router) {}
 
-  async inicioToast(){
+  async inicioToast(var1: string){
     const toast = await this.toastController.create({
-      message: 'La Sesión se ha iniciado correctamente',
-      duration: 2000
+      message: 'Bienvenido '+var1,
+      duration: 1500
     });
     toast.present();
   }
@@ -35,11 +36,11 @@ export class HomePage {
     toast.present();
   }
   login(){
-    if (this.usuario == this.usuario1[0]){
-      if (this.contrasenia == this.usuario1[1]){
+    if (this.usuario == this.usuario1[0] && this.contrasenia == this.usuario1[1]){
         console.log("Sesion iniciada " + this.usuario)
         this.nombre = this.usuario1[3];
         this.telefono = this.usuario1[4];
+        this.rut = this.usuario1[5];
         if (this.usuario1[2] == "0"){
           this.afilState = false;
         }else{
@@ -51,23 +52,19 @@ export class HomePage {
             pass: this.contrasenia,
             afil: this.afilState,
             name: this.nombre,
-            fono: this.telefono
+            fono: this.telefono,
+            rut: this.rut,
           }
         }
         
-        this.inicioToast();
+        this.inicioToast(this.nombre);
         this.router.navigate(['/principal'], navigationExtras);
-      }else{
-        console.log("Contraseña Incorrecta")
-        this.errorToast();
-      }
-      
-
-    }else if(this.usuario == this.usuario2[0]){
-      if (this.contrasenia == this.usuario2[1]){
+    
+    }else if(this.usuario == this.usuario2[0] && this.contrasenia == this.usuario2[1]){
         console.log("Sesion iniciada " + this.usuario)
         this.nombre = this.usuario2[3];
         this.telefono = this.usuario2[4];
+        this.rut = this.usuario2[5];
         if (this.usuario2[2] == "0"){
           this.afilState = false;
         }else{
@@ -79,16 +76,13 @@ export class HomePage {
             pass: this.contrasenia,
             afil: this.afilState,
             name: this.nombre,
-            fono: this.telefono
+            fono: this.telefono,
+            rut: this.rut,
           }
         }
         
-        this.inicioToast();
+        this.inicioToast(this.nombre);
         this.router.navigate(['/principal'], navigationExtras);
-      }else{
-        console.log("Contraseña Incorrecta")
-        this.errorToast();
-      }
     }else{
       this.errorToast();
     }

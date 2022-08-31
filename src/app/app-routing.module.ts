@@ -59,7 +59,11 @@ const routes: Routes = [
   {
     path: 'viajes',
     loadChildren: () => import('./pages/viajes/viajes.module').then( m => m.ViajesPageModule)
+  },  {
+    path: 'asientos',
+    loadChildren: () => import('./pages/asientos/asientos.module').then( m => m.AsientosPageModule)
   },
+
 
 
 ];
