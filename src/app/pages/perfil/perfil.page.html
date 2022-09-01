@@ -33,6 +33,14 @@
       
     </div>
 
+    <div class="wrapper" [routerLink]="['/configuracion']">
+      <div class="image-card">
+        <ion-img src="assets\images\configuracion.jpg"></ion-img>
+      </div>
+      <p class="ion-no-margin">Configuración</p>
+      
+    </div>
+
     <div class="wrapper" *ngIf = "a == 1" [routerLink]="['/pagina-principal']">
       <div class="image-card">
         <ion-img src="assets\images\auto2.png"></ion-img>
@@ -41,21 +49,23 @@
       
     </div>   
     
+    
   </div>
   <hr>
 
-  <div class="section">
+  <div class="section"> 
+    <!--
     <div class="section1">
       <ion-icon style="margin-top: 6%; margin-right: 4px;" size="small" name="cog-outline"></ion-icon>
       <h6 [routerLink]="['/configuracion']">Configuración</h6>
-    </div>
+    </div>-->
     <div class="section1">
-      <ion-icon style="margin-top: 6%; margin-right: 4px;" size="small" name="car-outline"></ion-icon>
-      <h6 [routerLink] = "['/ser-afiliado']">Ser afiliado UwUber</h6>
+      <ion-icon style="margin-right: 4px;" size="small" name="car-outline"></ion-icon>
+      <h6 [routerLink] = "['/ser-afiliado']">Ser conductor WayPlace</h6>
     </div>
 
     <div class="section1">
-      <ion-icon style="margin-top: 6%; margin-right: 4px;" size="small" name="help-circle-outline"></ion-icon>
+      <ion-icon style="margin-right: 4px;" size="small" name="help-circle-outline"></ion-icon>
       <h6>Términos y condiciones</h6>
     </div>
     

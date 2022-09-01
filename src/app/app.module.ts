@@ -1,7 +1,7 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { RouteReuseStrategy } from '@angular/router';
-import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
+
 
 import { IonicModule, IonicRouteStrategy } from '@ionic/angular';
 
@@ -10,7 +10,7 @@ import { AppRoutingModule } from './app-routing.module';
 
 @NgModule({
   declarations: [AppComponent],
-  imports: [BrowserModule, IonicModule.forRoot(), AppRoutingModule, MatProgressSpinnerModule],
+  imports: [BrowserModule, IonicModule.forRoot(), AppRoutingModule,],
   providers: [{ provide: RouteReuseStrategy, useClass: IonicRouteStrategy }],
   bootstrap: [AppComponent],
 })

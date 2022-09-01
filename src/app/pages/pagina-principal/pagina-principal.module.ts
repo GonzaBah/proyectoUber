@@ -6,6 +6,7 @@ import { IonicModule } from '@ionic/angular';
 
 import { PaginaPrincipalPageRoutingModule } from './pagina-principal-routing.module';
 
+import {MatProgressSpinnerModule} from '@angular/material/progress-spinner';
 import { PaginaPrincipalPage } from './pagina-principal.page';
 
 @NgModule({
@@ -13,7 +14,8 @@ import { PaginaPrincipalPage } from './pagina-principal.page';
     CommonModule,
     FormsModule,
     IonicModule,
-    PaginaPrincipalPageRoutingModule
+    PaginaPrincipalPageRoutingModule,
+    MatProgressSpinnerModule
   ],
   declarations: [PaginaPrincipalPage]
 })

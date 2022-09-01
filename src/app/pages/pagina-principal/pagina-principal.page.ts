@@ -4,6 +4,8 @@ import { MenuController } from '@ionic/angular';
 import { Observable } from 'rxjs';
 
 
+
+
 @Component({
   selector: 'app-pagina-principal',
   templateUrl: './pagina-principal.page.html',

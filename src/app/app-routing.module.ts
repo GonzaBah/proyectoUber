@@ -68,7 +68,11 @@ const routes: Routes = [
   {
     path: 'asientos',
     loadChildren: () => import('./pages/asientos/asientos.module').then( m => m.AsientosPageModule)
+  },  {
+    path: 'historial-pagos',
+    loadChildren: () => import('./pages/historial-pagos/historial-pagos.module').then( m => m.HistorialPagosPageModule)
   },
+
 
 
 
