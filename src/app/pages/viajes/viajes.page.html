@@ -9,12 +9,12 @@
 
 <ion-content>
   <div class="contenido1">
-    <ion-item>      
+    <ion-item class="placeholder">      
       <ion-input placeholder="Desde"></ion-input>
     </ion-item>
   </div>
   <div class="contenido1">
-    <ion-item>      
+    <ion-item class="placeholder">      
       <ion-input placeholder="Hacia"></ion-input>
     </ion-item>
   </div>
@@ -23,54 +23,68 @@
     <img src="assets\images\mapa.jpg" style="max-height: 100%;" class="fotomapa"><img>
   </div>
 
-  
-  <ion-button id="open-modal" expand="block">Open Sheet Modal</ion-button>
 
-  <ion-modal #modal trigger="open-modal" [initialBreakpoint]="0.25" [breakpoints]="[0, 0.25, 0.5, 0.75]">
+
+  <ion-button style="margin-left: 15px; margin-right:15px;" color="medium" id="open-modal" expand="block">Realizar viaje</ion-button>
+
+  <ion-modal
+    trigger="open-modal"
+    [initialBreakpoint]="0.5"
+    [breakpoints]="[0, 0.25, 0.5, 0.75]"
+    handleBehavior="cycle"
+  >
     <ng-template>
-      <ion-content>
-        <ion-searchbar placeholder="Search" (click)="modal.setCurrentBreakpoint(0.75)"></ion-searchbar>
-        <ion-list>
-          <ion-item>
+      <ion-content class="ion-padding">
+
+        <ion-list style="border-radius: 5px;">
+          <ion-list-header style="font-size: 18px;">Escoge un conductor</ion-list-header>
+          <br>
+          <ion-item (click)="presentAlert()" (click)="selectDriver(first,1)">
             <ion-avatar slot="start">
-              <ion-img src="https://i.pravatar.cc/300?u=b"></ion-img>
+              <ion-img src="assets\images\conductor2.jpg"></ion-img>
             </ion-avatar>
             <ion-label>
-              <h2>Connor Smith</h2>
-              <p>Sales Rep</p>
+              <h2>Walter Blanco</h2>
+              <p style="color: green;">Disponible</p>
             </ion-label>
           </ion-item>
-          <ion-item>
+          <ion-item (click)="selectDriver(second,2)">
             <ion-avatar slot="start">
-              <ion-img src="https://i.pravatar.cc/300?u=a"></ion-img>
+              <ion-img src="assets\images\conductor3.jpg"></ion-img>
             </ion-avatar>
             <ion-label>
-              <h2>Daniel Smith</h2>
-              <p>Product Designer</p>
+              <h2>Jesse HombreRosa</h2>
+              <p style="color: green;">Disponible</p>
             </ion-label>
           </ion-item>
-          <ion-item>
+          <ion-item (click)="selectDriver(third,3)">
             <ion-avatar slot="start">
-              <ion-img src="https://i.pravatar.cc/300?u=d"></ion-img>
+              <ion-img src="assets\images\conductor4.jpg"></ion-img>
             </ion-avatar>
             <ion-label>
-              <h2>Greg Smith</h2>
-              <p>Director of Operations</p>
+              <h2>Saul Hombrebueno</h2>
+              <p style="color: green;">Disponible</p>
             </ion-label>
           </ion-item>
-          <ion-item>
+          <ion-item (click)="selectDriver(four,4)">
             <ion-avatar slot="start">
-              <ion-img src="https://i.pravatar.cc/300?u=e"></ion-img>
+              <ion-img src="assets\images\conductor1.jpg"></ion-img>
             </ion-avatar>
             <ion-label>
-              <h2>Zoey Smith</h2>
-              <p>CEO</p>
+              <h2>McLovin</h2>
+              <p style="color: green;">Disponible</p>
             </ion-label>
           </ion-item>
         </ion-list>
+
       </ion-content>
     </ng-template>
   </ion-modal>
+
+  
+
+
+  
 
   
 

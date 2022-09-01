@@ -46,60 +46,42 @@
       <ion-title size="medium">UwUber</ion-title>
     </ion-toolbar>
   </ion-header>
-  <div id="container">
-    <!-- Inicio Primera Card -->
-    <ion-grid>
-      <ion-row>
-        <ion-col size="12">
+  <div class="content" id="container">
 
-          <div class="card" style='width: 70%; height: 65%;'>
-            <ion-card (click)="cardClick()">
-              <ion-card-header style="padding-bottom: 0px; padding-top: 10px; text-align: end;">
-                <ion-card-subtitle></ion-card-subtitle>
-                <ion-card-title
-                  style="font-size: large; font-family:'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif ; color: #FEFFFF;">
-                  Viajes</ion-card-title>
-              </ion-card-header>
+    <div  [routerLink] = "['/viajes']" class="content_div">
+      <ion-grid fixed>
+        <ion-row>
+          <ion-col size="12">
+            <div style="text-align: left; padding-left: 10px; display: flex;" class="col_div">              
+              <ion-label style="font-size: 35px; padding-top: 30px ; padding-bottom: 1rem; ">Viajes</ion-label>
+              <ion-icon class="icon" style="font-size: 60px; margin-left: 80px; margin-top: 10px;" name="car-sport-outline"></ion-icon>           
+            </div>
+          </ion-col>          
+        </ion-row>
+      </ion-grid>
+    </div>
 
-              <ion-card-content style="padding-bottom: 2px; text-align: center;">
-                <!--<ion-img src="assets\images\auto2.png" class="foto" ></ion-img>-->
-                <ion-icon size="large" name="car-outline"></ion-icon>
-
-              </ion-card-content>
-            </ion-card>
-          </div>
-        </ion-col>
-
-        <!-- Inicio Segunda Card -->
-
-        <ion-col size="12">
-
-          <div class="card" style='width: 70%; height: 65%; float:right;'>
-            <ion-card (click)="cardClick()">
-              <ion-card-header style="padding-bottom: 0px; padding-top: 10px; padding-right: 50px;">
-                <ion-card-subtitle></ion-card-subtitle>
-                <ion-card-title
-                  style="font-size: large; font-family:'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif ; color: #FEFFFF;">
-                  Reservar</ion-card-title>
-              </ion-card-header>
-
-              <ion-card-content style="padding-bottom: 2px; float: right;">
-                <ion-icon size="large" name="pencil-outline"></ion-icon>
-                <!--<ion-img src="assets\images\auto2.png" class="foto" ></ion-img>-->
-              </ion-card-content>
-            </ion-card>
-          </div>
-        </ion-col>
-      </ion-row>
-    </ion-grid>
+    <div  [routerLink] = "['/reservar']" class="content_div">
+      <ion-grid fixed>
+        <ion-row>
+          <ion-col size="12">
+            <div style="text-align: right; padding-left: 10px; display: flex;" class="col_div">              
+              <ion-label style="font-size: 33px; padding-top: 30px;">Reservar</ion-label>
+              <ion-icon class="icon" style="font-size: 60px;  margin-left: 50px; margin-top: 10px;" name="pencil-outline"></ion-icon>            
+            </div>
+          </ion-col>          
+        </ion-row>
+      </ion-grid>
+    </div>
+    <br>
 
     <!-- Texto ubicación y Mapa -->
     <ion-grid>
       <ion-row>
         <ion-col size="12">
-          <p
-            style="font-size: large; font-family:'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif ; color: rgba(41, 67, 197, 0.91);">
-            Escoge tu ubicación </p>
+          <p class="textubc" style="font-size: large; font-family:'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif ; color: rgba(255, 255, 255, 0.91);">
+            Escoge tu ubicación <br> <ion-icon style="color: rgba(0, 0, 0, 0.743);" name="caret-down-outline"></ion-icon></p>
+            
             <ion-img src="assets\images\mapa.jpg" class="fotomapa"></ion-img>
         </ion-col>
       </ion-row>

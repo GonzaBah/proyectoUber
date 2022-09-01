@@ -38,6 +38,50 @@ ion-content{
         overflow: hidden;
     }
 
+    .content_div{
+        background: white;
+        width: 100%;
+        margin-bottom: -10px;
+        
+        
+        .col_div{       
+            background-color: rgb(229, 229, 229);    
+            height: 80px;
+            box-shadow: 0px 3px 6px rgba(0,0,0,0.2);
+            cursor: pointer;
+            border-radius: 5px;
+            
+        }
+
+        
+
+        ion-label{
+            font-size: larger;
+        }
+
+
+    }
+    .icon{
+        
+        border-radius: 50%;
+        border-color: #ffffff91;
+        border-style: ridge;
+    }
+
+    
+    .textubc{
+        background-color: rgba(26, 26, 26, 0.808);
+        border-radius: 5px;
+        height: 28px;
+        box-shadow: 0px 3px 6px rgba(255, 255, 255, 0.2);
+        margin-top: 5px;
+        margin-bottom: 15px;
+        padding-left: 7px;
+        padding-top: 2px;
+        text-align: center;
+        font-size: small;
+    }
+
     
 
 

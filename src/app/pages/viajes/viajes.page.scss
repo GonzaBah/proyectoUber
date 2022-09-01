@@ -1,11 +1,11 @@
 ion-content{
-    --background: #292929;
+    --background: #f8f8f8;
     font-family:'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif ;
    
-    ion-item{
+    .placeholder{
         border-radius: 5px;
         height: 28px;
-        box-shadow: 1px 8px 8px 0px #010101;
+        box-shadow: 0px 3px 6px rgba(0,0,0,0.2);
         margin: 5px;
         text-align: start;
         font-size: small;
@@ -15,12 +15,66 @@ ion-content{
         margin-bottom: 20px;
     }
     img{
-        background-color: red;
         margin-top: 5px;
-        height: 375px;       
+        height: 375px;     
     }
     ion-button{
         border: 5px;
     }
+    
+    ion-modal{
+        --background:  white;
+    }
+    ion-button{
+        box-shadow: 0px 3px 6px rgba(0,0,0,0.2);
+        border-radius: 15px;
+    }
+    ion-item{
+        cursor: pointer;
+    }
+
+    ion-list{
+        ion-img{
+            border: 3px solid #555;
+        }
+
+    }
+
+    ion-alert.custom-alert {
+        --backdrop-opacity: 0.7;
+
+      }
+      
+      .custom-alert .alert-button-group {
+        padding: 8px;
+      }
+      
+      button.alert-button.alert-button-confirm {
+        background-color: var(--ion-color-success);
+        color: var(--ion-color-success-contrast);
+      }
+      
+      .md button.alert-button.alert-button-confirm {
+        border-radius: 4px;
+      }
+      
+      .ios .custom-alert button.alert-button {
+        border: 0.55px solid rgba(var(--ion-text-color-rgb, 0, 0, 0), 0.2)
+      }
+      
+      .ios button.alert-button.alert-button-cancel {
+        border-right: 0;
+        border-bottom-left-radius: 13px;
+        border-top-left-radius: 13px;
+      }
+      
+      .ios button.alert-button.alert-button-confirm {
+        border-bottom-right-radius: 13px;
+        border-top-right-radius: 13px;
+      }
+    
+    
+   
+
     
 }
