@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
 import { NavigationExtras, Router } from '@angular/router';
-import { AlertController, ToastController } from '@ionic/angular';
+import { AlertController, AnimationController, ToastController, Animation } from '@ionic/angular';
 
 @Component({
   selector: 'app-home',
@@ -19,7 +19,10 @@ export class HomePage {
   telefono: string = "";
   rut: string = "";
 
-  constructor(public toastController: ToastController, private router: Router) {}
+  constructor(public toastController: ToastController, private router: Router, private animationCtrl: AnimationController) {
+
+   
+  }
 
   async inicioToast(var1: string){
     const toast = await this.toastController.create({

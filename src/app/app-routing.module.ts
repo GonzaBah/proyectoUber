@@ -59,7 +59,13 @@ const routes: Routes = [
   {
     path: 'viajes',
     loadChildren: () => import('./pages/viajes/viajes.module').then( m => m.ViajesPageModule)
-  },  {
+  },
+  {
+    path: 'agreg-direccion',
+    loadChildren: () => import('./pages/agreg-direccion/agreg-direccion.module').then( m => m.AgregDireccionPageModule)
+  },
+
+  {
     path: 'asientos',
     loadChildren: () => import('./pages/asientos/asientos.module').then( m => m.AsientosPageModule)
   },
