@@ -8,7 +8,7 @@
 
 <ion-content>
   <div class="header">
-    <h1>Información de Cuenta</h1>
+    <h1 style="margin-top: 5px;">Información de Cuenta</h1>
   </div>
   <ion-grid>
     <ion-row>
@@ -60,8 +60,8 @@
     </ion-item>
 
   </ion-list>
-  <ion-button *ngIf = "varEd == 0" (click)="editarPf()">Editar</ion-button>
+  <ion-button style='float: right; padding-top: 5px;' color="dark" *ngIf = "varEd == 0" (click)="editarPf()">Editar</ion-button>
   
-  <ion-button *ngIf = "varEd == 1" (click)="confirmPf()">Confirmar</ion-button>
+  <ion-button style='float: right; padding-top: 5px;' color="dark" *ngIf = "varEd == 1" (click)="confirmPf()">Confirmar</ion-button>
   
 </ion-content>
