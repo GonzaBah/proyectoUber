@@ -42,7 +42,7 @@ export class HomePage {
   async login(){
     const sleep = (ms: number) => new Promise((r) => setTimeout(r, ms));
     this.variableXD = 1;
-    await sleep(3000);
+    await sleep(1500);
     if (this.usuario == this.usuario1[0] && this.contrasenia == this.usuario1[1]){
         console.log("Sesion iniciada " + this.usuario)
         this.nombre = this.usuario1[3];

@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { ActivatedRoute, Router } from '@angular/router';
 import { AlertController } from '@ionic/angular';
 
 @Component({
@@ -7,10 +8,16 @@ import { AlertController } from '@ionic/angular';
   styleUrls: ['./viajes.page.scss'],
 })
 export class ViajesPage implements OnInit {
-
+  tipo: number = 0;
   answer: any = "1";
 
-  constructor(private alertController: AlertController) { }
+  constructor(private alertController: AlertController, private router: Router, private activedRouter: ActivatedRoute) {
+    this.activedRouter.queryParams.subscribe(params =>{
+      if(this.router.getCurrentNavigation().extras.state){
+        this.tipo = this.router.getCurrentNavigation().extras.state.tipo;
+      }
+    })
+   }
 
   async presentAlert(){
     const alert = await this.alertController.create({

@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { NavigationExtras, Router } from '@angular/router';
 import { AlertController } from '@ionic/angular';
 
 @Component({
@@ -7,11 +8,13 @@ import { AlertController } from '@ionic/angular';
   styleUrls: ['./reg-vehiculo.page.scss'],
 })
 export class RegVehiculoPage implements OnInit {
+  a: boolean = false;
 
-  constructor(private alertController: AlertController) { }
+  constructor(private alertController: AlertController, private router: Router) { }
 
   ngOnInit() {
   }
+  
   async presentAlert() {
     const alert = await this.alertController.create({
       header: '¡Vehículo registrado!',
@@ -20,5 +23,15 @@ export class RegVehiculoPage implements OnInit {
     });
 
     await alert.present();
+  }
+  registrarVeh(){
+    this.a = true;
+    let navigationExtras: NavigationExtras = {
+      state: {
+        afil: this.a,
+      }
+    }
+    this.router.navigate(['/principal'], navigationExtras);
+    this.presentAlert();
   }
 }

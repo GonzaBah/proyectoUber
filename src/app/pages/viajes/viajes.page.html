@@ -25,7 +25,8 @@
 
 
 
-  <ion-button style="margin-left: 15px; margin-right:15px;" color="medium" id="open-modal" expand="block">Realizar viaje</ion-button>
+  <ion-button *ngIf = "tipo == 0" style="margin-left: 15px; margin-right:15px;" color="medium" id="open-modal" expand="block">Ver Conductores</ion-button>
+  <ion-button *ngIf = "tipo == 1" style="margin-left: 15px; margin-right:15px;" color="medium" expand="block">Registrar Viaje</ion-button>
 
   <ion-modal
     trigger="open-modal"

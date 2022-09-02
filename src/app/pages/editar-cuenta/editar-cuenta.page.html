@@ -20,7 +20,6 @@
           <ion-label *ngIf="a == 0">Pasajero</ion-label>
           
         </div>
-        <ion-button *ngIf = "varEd == 0" (click)="editarPf()">Editar</ion-button>
       </ion-col>
     </ion-row>
   </ion-grid>
@@ -61,6 +60,7 @@
     </ion-item>
 
   </ion-list>
+  <ion-button *ngIf = "varEd == 0" (click)="editarPf()">Editar</ion-button>
   
   <ion-button *ngIf = "varEd == 1" (click)="confirmPf()">Confirmar</ion-button>
   

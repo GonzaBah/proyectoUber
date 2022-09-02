@@ -5,7 +5,9 @@ ion-content{
     --ion-background-color:#ffffff;
     font-size: large; 
     font-family:'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
-
+    .item-input ion-label{
+        pointer-events:all!important;
+      }
     .card{
        --ion-background-color: #3AAFA9;
        :hover{

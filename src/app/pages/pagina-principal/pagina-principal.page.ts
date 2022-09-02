@@ -3,12 +3,12 @@ import { ActivatedRoute, NavigationExtras, Router } from '@angular/router';
 import { MenuController } from '@ionic/angular';
 import { Observable } from 'rxjs';
 
-
 @Component({
   selector: 'app-pagina-principal',
   templateUrl: './pagina-principal.page.html',
   styleUrls: ['./pagina-principal.page.scss'],
 })
+
 export class PaginaPrincipalPage implements OnInit {
   u: string = "";
   p: string = "";
@@ -20,7 +20,10 @@ export class PaginaPrincipalPage implements OnInit {
   
   constructor(private menuController: MenuController, private router: Router, private activedRouter: ActivatedRoute) {
     this.activedRouter.queryParams.subscribe(params =>{
-      if(this.router.getCurrentNavigation().extras.state){
+      if(!this.router.getCurrentNavigation().extras.state.user && this.router.getCurrentNavigation().extras.state.afil){
+        this.a = this.router.getCurrentNavigation().extras.state.afil;
+      }
+      else if(this.router.getCurrentNavigation().extras.state){
         this.u = this.router.getCurrentNavigation().extras.state.user;
         this.p = this.router.getCurrentNavigation().extras.state.pass;
         this.a = this.router.getCurrentNavigation().extras.state.afil;
@@ -37,6 +40,14 @@ export class PaginaPrincipalPage implements OnInit {
   }
   closeMenu(){
     this.menuController.close("MenuConductor");
+  }
+  abrirViajes(tipo: number){
+    let navigationExtras: NavigationExtras = {
+      state: {
+        tipo: tipo,
+      }
+    }
+    this.router.navigate(['/viajes'], navigationExtras);
   }
   abrirPerfil(){
     let navigationExtras: NavigationExtras = {
