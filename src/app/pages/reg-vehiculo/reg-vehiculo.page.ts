@@ -9,7 +9,7 @@ import { AlertController } from '@ionic/angular';
 })
 export class RegVehiculoPage implements OnInit {
   a: boolean = false;
-
+  varProg: boolean = false;
   constructor(private alertController: AlertController, private router: Router) { }
 
   ngOnInit() {
@@ -24,7 +24,10 @@ export class RegVehiculoPage implements OnInit {
 
     await alert.present();
   }
-  registrarVeh(){
+  async registrarVeh(){
+    const sleep = (ms: number) => new Promise((r) => setTimeout(r, ms));
+    this.varProg = true;
+    await sleep(1500);
     this.a = true;
     let navigationExtras: NavigationExtras = {
       state: {
@@ -33,5 +36,6 @@ export class RegVehiculoPage implements OnInit {
     }
     this.router.navigate(['/principal'], navigationExtras);
     this.presentAlert();
+    this.varProg = false;
   }
 }

@@ -12,7 +12,7 @@ export class HomePage {
   usuario1: any[] = ["user@mail.com", "1234", false, "User Name", "+12345678", "111-1", "01-20"];
   usuario2: any[] = ["chimba@rongo.com", "chimba", true, "Chimba Rongo", "+569 Peor es Nada", "222-2", "02-20"];
 
-  variableXD: number = 0;
+  varProg: boolean = false;
 
   usuario: string = "";
   contrasenia: string = "";
@@ -41,7 +41,7 @@ export class HomePage {
   }
   async login(){
     const sleep = (ms: number) => new Promise((r) => setTimeout(r, ms));
-    this.variableXD = 1;
+    this.varProg = true;
     await sleep(1500);
     if (this.usuario == this.usuario1[0] && this.contrasenia == this.usuario1[1]){
         console.log("Sesion iniciada " + this.usuario)
@@ -93,7 +93,7 @@ export class HomePage {
     }else{
       this.errorToast();
     }
-    this.variableXD = 0;
+    this.varProg = false;
   }
 }
 
