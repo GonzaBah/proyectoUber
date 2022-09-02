@@ -1,11 +1,6 @@
-<ion-header>
-  <ion-toolbar>
-    <ion-title>reg-vehiculo</ion-title>
-  </ion-toolbar>
-</ion-header>
 
 <ion-content>
-  <ion-list lines="full" class="ion-no-margin">
+  <ion-list style="margin-top: 45px" lines="full" class="ion-no-margin">
     <ion-card class="card1">
       <ion-label>Agrega un vehículo para registrarte como conductor</ion-label>
     </ion-card>
@@ -38,8 +33,8 @@
     
     
     <br>  
-    <ion-button shape="round" (click)="registrarVeh()">Registrar Vehiculo</ion-button>
-    <mat-spinner *ngIf="varProg == 1" [diameter]="70" style="padding-top: 40px"></mat-spinner>
+    <ion-button color="dark" shape="round" (click)="registrarVeh()">Registrar Vehiculo</ion-button>
+    <mat-spinner *ngIf="varProg == 1" [diameter]="45" style="margin-top: 20px"></mat-spinner>
   </center>
   
 </ion-content>

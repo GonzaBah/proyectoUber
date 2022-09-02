@@ -18,7 +18,7 @@ export class RegVehiculoPage implements OnInit {
   async presentAlert() {
     const alert = await this.alertController.create({
       header: '¡Vehículo registrado!',
-      subHeader: '¡Bienvenido conductor UwUber!',
+      subHeader: '¡Bienvenido conductor WayPlace!',
       buttons: ['Continuar'],
     });
 
