@@ -59,6 +59,11 @@
       <ion-icon style="margin-top: 6%; margin-right: 4px;" size="small" name="cog-outline"></ion-icon>
       <h6 [routerLink]="['/configuracion']">Configuración</h6>
     </div>-->
+    <div *ngIf = "a == 1" [routerLink] = "['/vehiculo']" class="section1">
+      <ion-icon style="margin-right: 4px;" size="small" name="car-sport-outline"></ion-icon>
+      <h6>Ajustes Vehiculo</h6>
+    </div>
+
     <div class="section1">
       <ion-icon style="margin-right: 4px;" size="small" name="car-outline"></ion-icon>
       <h6 [routerLink] = "['/ser-afiliado']">Ser conductor WayPlace</h6>

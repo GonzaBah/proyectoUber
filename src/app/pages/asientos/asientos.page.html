@@ -1,6 +1,5 @@
 <ion-header>
   <ion-toolbar>
-    <ion-title>asientos</ion-title>
     <ion-buttons slot="start">
       <ion-back-button></ion-back-button>
     </ion-buttons>
@@ -8,37 +7,105 @@
 </ion-header>
 
 <ion-content>
-  <ion-card style="margin: 15px auto" class="card-center">
-    <ion-row>
-      <ion-col size="6">
-        <center>
-          <ion-icon name="lock-closed" style="font-size: 60px"></ion-icon>
-        </center>
-        
-      </ion-col>
-      <ion-col size="6">
-        <center>
-          <ion-icon name="radio-button-off" style="font-size: 60px"></ion-icon>
-        </center>
-        
-      </ion-col>
-    </ion-row>
-    <ion-row>
-      <ion-col size="4">
-        <center>
-          <ion-icon name="radio-button-off" style="font-size: 60px"></ion-icon>
-        </center>
-      </ion-col>
-      <ion-col size="4">
-        <center>
-          <ion-icon name="radio-button-off" style="font-size: 60px"></ion-icon>
-        </center>
-      </ion-col>
-      <ion-col size="4">
-        <center>
-          <ion-icon name="radio-button-off" style="font-size: 60px"></ion-icon>
-        </center>
-      </ion-col>
-    </ion-row>
-  </ion-card>
+  <div class="content">
+
+    <div>
+      <h1 class="title">Asientos</h1>
+
+    </div>
+
+    <div class="content_div">
+      <ion-grid fixed>
+        <ion-row>
+          <ion-col size="4">
+            <div class="col_div">
+              <p style="color: green;">Disponible</p>
+              <img src="assets\images\noperfil.jpg" class="fotoperfil">          
+            </div>
+          </ion-col>
+          
+          <ion-col size="4">
+            <div class="col_div">
+              <p style="color: red;">Ocupado</p>
+              <img src="assets\images\conductor1.jpg" class="fotoperfil">          
+            </div>
+          </ion-col>
+
+          <ion-col size="4">
+            <div class="col_div">
+              <p style="color:red" >Ocupado</p>
+              <img src="assets\images\conductor1.jpg" class="fotoperfil">          
+            </div>
+          </ion-col>                 
+        </ion-row>
+      </ion-grid>
+    </div>
+
+    <div class="content_div">
+      <ion-grid fixed>
+        <ion-row>
+          <ion-col size="4">
+
+          </ion-col>    
+          
+          <ion-col size="4">
+            <div class="col_div">
+              <p style="color:red" >Ocupado</p>
+              <img src="assets\images\conductor1.jpg" class="fotoperfil">          
+            </div>
+          </ion-col>    
+        </ion-row>
+      </ion-grid>     
+    </div>
+
+    
+  
+    <hr>
+
+    <ion-list style="border-radius: 5px; cursor: pointer;">
+      <ion-list-header style="font-size: 18px;">Información asientos</ion-list-header>
+      <br>
+      <ion-item (click)="presentAlert()" (click)="selectDriver(first,1)">
+        <ion-avatar slot="start">
+          <ion-img src="assets\images\noperfil.jpg"></ion-img>
+        </ion-avatar>
+        <ion-label>
+          <h2>Asiento 1</h2>
+          <h3></h3>
+          <p style="color: green;">Disponible</p>
+        </ion-label>
+      </ion-item>
+      <ion-item (click)="selectDriver(second,2)">
+        <ion-avatar slot="start">
+          <ion-img src="assets\images\conductor1.jpg"></ion-img>
+        </ion-avatar>
+        <ion-label>
+          <h2>Asiento 2</h2>
+          <h3>Pepito Serna Aguado</h3>
+          <p style="color: red;">Ocupado</p>
+        </ion-label>
+      </ion-item>
+      <ion-item (click)="selectDriver(third,3)">
+        <ion-avatar slot="start">
+          <ion-img src="assets\images\conductor1.jpg"></ion-img>
+        </ion-avatar>
+        <ion-label>
+          <h2>Asiento 3</h2>
+          <h3>Pepito 2</h3>
+          <p style="color: red;">Ocupado</p>
+        </ion-label>
+      </ion-item>
+      <ion-item (click)="selectDriver(four,4)">
+        <ion-avatar slot="start">
+          <ion-img src="assets\images\conductor1.jpg"></ion-img>
+        </ion-avatar>
+        <ion-label>
+          <h2>Asiento 4</h2>
+          <h3>Pepito 3</h3>
+          <p style="color: red;">Ocupado</p>
+        </ion-label>
+      </ion-item>
+    </ion-list>
+  </div>
+
 </ion-content>
