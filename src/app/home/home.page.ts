@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 import { NavigationExtras, Router } from '@angular/router';
 import { AlertController, AnimationController, ToastController, Animation } from '@ionic/angular';
+import { SqliteService } from '../services/sqlite.service';
 
 @Component({
   selector: 'app-home',
@@ -23,7 +24,9 @@ export class HomePage {
 
   
 
-  constructor(public toastController: ToastController, private router: Router, private animationCtrl: AnimationController) {}
+  constructor(public toastController: ToastController, private router: Router, private animationCtrl: AnimationController, private wayplaceDB: SqliteService) {
+    
+  }
 
   async inicioToast(var1: string){
     const toast = await this.toastController.create({
