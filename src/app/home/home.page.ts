@@ -28,6 +28,7 @@ export class HomePage {
     
   }
 
+  
   async inicioToast(var1: string){
     const toast = await this.toastController.create({
       message: 'Bienvenido '+var1,
@@ -35,6 +36,7 @@ export class HomePage {
     });
     toast.present();
   }
+  
   async errorToast(){
     const toast = await this.toastController.create({
       message: 'Correo o Contraseña invalido',
