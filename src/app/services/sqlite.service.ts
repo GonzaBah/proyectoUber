@@ -51,14 +51,12 @@ export class SqliteService {
 
       await this.database.executeSql(this.RolPasaj, []);
       await this.database.executeSql(this.RolAfil, []);
-
-      this.database.executeSql("select * from rol;", []).then((data)=>{
-        for (let i=0; i < data.rows.length; i++){
-          let item: string = data.rows.item(i);
-          console.log("valor rol "+i+": "+item.valueOf)
-        }
+      //Llamar a los datos de una tabla
+      this.database.transaction((tr) => {
+        tr.executeSql("select * from rol;", [], function(tr, data) {
+          console.log("Valor Rol 1: "+data.rows.item(0))
+        })
       });
-
       this.isDBReady.next(true);
     } catch (e) {
       console.log(e);
