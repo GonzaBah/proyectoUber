@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, NavigationExtras, Router } from '@angular/router';
 import { MenuController } from '@ionic/angular';
 import { Observable } from 'rxjs';
+import { CamaraApiService } from 'src/app/services/camara-api.service';
 
 @Component({
   selector: 'app-pagina-principal',
@@ -18,7 +19,8 @@ export class PaginaPrincipalPage implements OnInit {
   r: string = "";
   fe: string = "";
   
-  constructor(private menuController: MenuController, private router: Router, private activedRouter: ActivatedRoute) {
+  constructor(private menuController: MenuController, private router: Router, private activedRouter: ActivatedRoute, 
+    public photo: CamaraApiService,) {
     this.activedRouter.queryParams.subscribe(params =>{
       if(!this.router.getCurrentNavigation().extras.state.user && this.router.getCurrentNavigation().extras.state.afil){
         this.a = this.router.getCurrentNavigation().extras.state.afil;
@@ -66,6 +68,10 @@ export class PaginaPrincipalPage implements OnInit {
   cardClick(){
     console.log("btn Clicked");
     alert("THE GAME")
+  }
+
+  addPhoto(){
+    this.photo.takePicture();
   }
 
   ngOnInit() {

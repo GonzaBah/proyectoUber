@@ -1,6 +1,7 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { NavigationExtras, Router } from '@angular/router';
 import { AlertController, AnimationController, ToastController, Animation } from '@ionic/angular';
+import { ApiRestService } from '../api-rest.service';
 import { SqliteService } from '../services/sqlite.service';
 
 @Component({
@@ -8,10 +9,13 @@ import { SqliteService } from '../services/sqlite.service';
   templateUrl: 'home.page.html',
   styleUrls: ['home.page.scss'],
 })
-export class HomePage {
+export class HomePage implements OnInit{
   //Usuarios predefinidos
   usuario1: any[] = ["user@mail.com", "1234", false, "User Name", "+12345678", "111-1", "01-20"];
   usuario2: any[] = ["chimba@rongo.com", "chimba", true, "Chimba Rongo", "+569 Peor es Nada", "222-2", "02-20"];
+
+  users: any;
+  autos: any;
 
   varProg: boolean = false;
 
@@ -24,8 +28,23 @@ export class HomePage {
 
   
 
-  constructor(public toastController: ToastController, private router: Router, private animationCtrl: AnimationController, private wayplaceDB: SqliteService) {
+  constructor(public toastController: ToastController, private router: Router, private animationCtrl: AnimationController, private wayplaceDB: SqliteService, private api: ApiRestService) {
     
+  }
+
+  ngOnInit(): void {
+    this.api.getUsers().subscribe((rrr)=>{
+      this.users=rrr;
+    },(error)=>{
+      console.log(error);
+    })
+
+    this.api.getAutos().subscribe((res)=>{
+      this.autos=res;
+      },(error)=>{
+      console.log(error);
+      })
+     
   }
 
   

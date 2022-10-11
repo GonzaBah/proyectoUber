@@ -11,14 +11,14 @@
 
 
   <ion-list>
-    <ion-list-header style="font-size: 20px;"> Reservas Disponibles </ion-list-header>
+    <ion-list-header style="font-size: 20px;" > Reservas Disponibles </ion-list-header>
 
-    <ion-item (click)="presentAlert()">
+    <ion-item  (click)="presentAlert()">
       <ion-avatar slot="start">
         <img src="assets\images\conductor2.jpg" />
       </ion-avatar>
-      <ion-label>
-        <p style="font-size: 14px;">Walter Blanco</p>
+      <ion-label >
+        <p [(ngModel)]="users" *ngIf= "id_rol == 2" style="font-size: 14px;">{{nombre}}</p>
         <p style="display: flex; font-size: 11px;">Horario: 20:30</p>       
       </ion-label>
     </ion-item>

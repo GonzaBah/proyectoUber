@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
+import { CamaraApiService } from 'src/app/services/camara-api.service';
 
 @Component({
   selector: 'app-editar-cuenta',
@@ -14,9 +15,10 @@ export class EditarCuentaPage implements OnInit {
   a: boolean = false;
   n: string = "";
   f: string = "";
+  foto: any;
 
   
-  constructor(private router: Router, private activedRouter: ActivatedRoute) {
+  constructor(private router: Router, private activedRouter: ActivatedRoute, private photoService: CamaraApiService) {
     this.activedRouter.queryParams.subscribe(params =>{
       if(this.router.getCurrentNavigation().extras.state){
         this.u = this.router.getCurrentNavigation().extras.state.user;
@@ -27,8 +29,16 @@ export class EditarCuentaPage implements OnInit {
       }
     })
    }
+  
+  tomarFoto(){
+    this.photoService.takePicture();
+  }
 
   ngOnInit() {
+    this.photoService.fetchFoto().subscribe(res=>{
+      this.foto = res;
+    }
+    )
   }
   editarPf(){
     this.varEd = 1;

@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, NavigationExtras, Router } from '@angular/router';
 import { MenuController } from '@ionic/angular';
 import { Category } from 'src/app/models/category.model';
+import { CamaraApiService } from 'src/app/services/camara-api.service';
 
 @Component({
   selector: 'app-perfil',
@@ -10,6 +11,7 @@ import { Category } from 'src/app/models/category.model';
 })
 export class PerfilPage implements OnInit {
   categories: Category[] = [];
+  foto: any;
 
   u: string = "";
   p: string = "";
@@ -32,8 +34,11 @@ export class PerfilPage implements OnInit {
     })
    }
 
+
   ngOnInit() {
     this.getCategories();
+
+
   }
 
   editarPerfil(){
