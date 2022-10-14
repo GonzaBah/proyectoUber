@@ -56,7 +56,7 @@
 
     <div *ngIf = "user.idRol == 0" class="section1">
       <ion-icon style="margin-right: 4px;" size="small" name="car-outline"></ion-icon>
-      <h6 [routerLink] = "['/ser-afiliado']">Ser conductor WayPlace</h6>
+      <h6 (click)="serAfil()">Ser conductor WayPlace</h6>
     </div>
 
     <div class="section1">

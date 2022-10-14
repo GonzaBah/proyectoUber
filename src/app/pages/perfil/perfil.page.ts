@@ -33,7 +33,14 @@ export class PerfilPage implements OnInit {
     }
     this.router.navigate(['/editar-cuenta'], navigationExtras);
   }
-
+  serAfil(){
+    let navigationExtras: NavigationExtras = {
+      state: {
+        user: this.user
+      }
+    }
+    this.router.navigate(['/ser-afiliado'], navigationExtras);
+  }
   getCategories(){
     this.categories = [
       {

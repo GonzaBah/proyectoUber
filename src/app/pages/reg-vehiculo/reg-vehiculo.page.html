@@ -4,19 +4,31 @@
     <ion-card class="card1">
       <ion-label>Agrega un vehículo para registrarte como conductor</ion-label>
     </ion-card>
-    <ion-card>
+    <ion-card lines="full" class="ion-no.margin">
       <ion-card-content>
-        <ion-input placeholder="Marca" type="text"></ion-input>
+        <ion-select [(ngModel)]="marca" placeholder="Selecciona una Marca" >
+          <ion-select-option *ngFor="let i of arrayMarca" value="{{ i.idmarca }}">{{ i.nombreMarca }}</ion-select-option>
+        </ion-select>
       </ion-card-content>
     </ion-card>
     <ion-card lines="full" class="ion-no.margin">
       <ion-card-content>
-        <ion-input placeholder="Modelo" type="text"></ion-input>
+        <ion-input [(ngModel)]="modelo" placeholder="Modelo" type="text"></ion-input>
       </ion-card-content>
     </ion-card>
     <ion-card lines="full" class="ion-no.margin">
       <ion-card-content>
-        <ion-input placeholder="Patente" type="text"></ion-input>
+        <ion-input [(ngModel)]="color" placeholder="Color" type="text"></ion-input>
+      </ion-card-content>
+    </ion-card>
+    <ion-card lines="full" class="ion-no.margin">
+      <ion-card-content>
+        <ion-input [(ngModel)]="annio" placeholder="Año" type="text"></ion-input>
+      </ion-card-content>
+    </ion-card>
+    <ion-card lines="full" class="ion-no.margin">
+      <ion-card-content>
+        <ion-input [(ngModel)]="patente" placeholder="Patente" type="text"></ion-input>
       </ion-card-content>
     </ion-card>
   </ion-list>

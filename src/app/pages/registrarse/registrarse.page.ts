@@ -40,7 +40,7 @@ export class RegistrarsePage implements OnInit {
   }
 
   registrarse(){
-    let regex: RegExp = /^(?=.{1,}\d)(?=.*[a-z])(?=.{1,}[A-Z])(?=.*[a-zA-Z]).{4,}$/g;
+    let regex: RegExp = /^(?=.{1,}\d)(?=.*[a-z])(?=.{1,}[A-Z])(?=.*[a-zA-Z]).{6,}$/g;
     let valid = false;
     for (let i of this.arrayUser){
       if(this.correo == i.correo || this.rut == i.rut){
@@ -52,7 +52,7 @@ export class RegistrarsePage implements OnInit {
     }else if (this.pass != this.pass2){
       this.errorToast("las contraseñas no coinciden");
     }else if (!regex.test(this.pass)){
-      this.errorToast("la contraseña debe tener´al menos 1 mayúscula, 1 minúscula y 1 número");
+      this.errorToast("la contraseña debe tener´al menos UNA mayúscula, UNA minúscula y UN número");
     }else{
       this.wayplaceDB.agregarUser(this.rut, this.nom, this.apell, this.correo, this.pass, this.rol);
       this.regToast();
