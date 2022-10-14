@@ -2,6 +2,8 @@ import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, NavigationExtras, Router } from '@angular/router';
 import { MenuController } from '@ionic/angular';
 import { Observable } from 'rxjs';
+import { SqliteService } from 'src/app/services/sqlite.service';
+import { Usuario } from 'src/app/services/usuario';
 
 @Component({
   selector: 'app-pagina-principal',
@@ -10,27 +12,12 @@ import { Observable } from 'rxjs';
 })
 
 export class PaginaPrincipalPage implements OnInit {
-  u: string = "";
-  p: string = "";
-  a: boolean = false;
-  n: string = "";
-  f: string = "";
-  r: string = "";
-  fe: string = "";
+  user: Usuario;
   
-  constructor(private menuController: MenuController, private router: Router, private activedRouter: ActivatedRoute) {
+  constructor(private menuController: MenuController, private router: Router, private activedRouter: ActivatedRoute, private wayplaceDB: SqliteService) {
     this.activedRouter.queryParams.subscribe(params =>{
-      if(!this.router.getCurrentNavigation().extras.state.user && this.router.getCurrentNavigation().extras.state.afil){
-        this.a = this.router.getCurrentNavigation().extras.state.afil;
-      }
-      else if(this.router.getCurrentNavigation().extras.state){
-        this.u = this.router.getCurrentNavigation().extras.state.user;
-        this.p = this.router.getCurrentNavigation().extras.state.pass;
-        this.a = this.router.getCurrentNavigation().extras.state.afil;
-        this.n = this.router.getCurrentNavigation().extras.state.name;
-        this.f = this.router.getCurrentNavigation().extras.state.fono;
-        this.r = this.router.getCurrentNavigation().extras.state.rut;
-        this.fe = this.router.getCurrentNavigation().extras.state.fech;
+      if(this.router.getCurrentNavigation().extras.state){
+        this.user = this.router.getCurrentNavigation().extras.state.user;
       }
     })
    }
@@ -52,13 +39,7 @@ export class PaginaPrincipalPage implements OnInit {
   abrirPerfil(){
     let navigationExtras: NavigationExtras = {
       state: {
-        user: this.u,
-        pass: this.p,
-        afil: this.a,
-        name: this.n,
-        fono: this.f,
-        rut: this.r,
-        fech: this.fe
+        user: this.user
       }
     }
     this.router.navigate(['/perfil'], navigationExtras);

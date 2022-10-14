@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, NavigationExtras, Router } from '@angular/router';
 import { MenuController } from '@ionic/angular';
 import { Category } from 'src/app/models/category.model';
+import { Usuario } from 'src/app/services/usuario';
 
 @Component({
   selector: 'app-perfil',
@@ -11,23 +12,11 @@ import { Category } from 'src/app/models/category.model';
 export class PerfilPage implements OnInit {
   categories: Category[] = [];
 
-  u: string = "";
-  p: string = "";
-  a: boolean = false;
-  n: string = "";
-  f: string = "";
-  r: string = "";
-  fe: string = "01-01";
-
+  user: Usuario;
   constructor(private router: Router, private activedRouter: ActivatedRoute) {
     this.activedRouter.queryParams.subscribe(params =>{
       if(this.router.getCurrentNavigation().extras.state){
-        this.u = this.router.getCurrentNavigation().extras.state.user;
-        this.p = this.router.getCurrentNavigation().extras.state.pass;
-        this.a = this.router.getCurrentNavigation().extras.state.afil;
-        this.n = this.router.getCurrentNavigation().extras.state.name;
-        this.f = this.router.getCurrentNavigation().extras.state.fono;
-        this.r = this.router.getCurrentNavigation().extras.state.rut;
+        this.user = this.router.getCurrentNavigation().extras.state.user;
       }
     })
    }
@@ -39,11 +28,7 @@ export class PerfilPage implements OnInit {
   editarPerfil(){
     let navigationExtras: NavigationExtras = {
       state: {
-        user: this.u,
-        pass: this.p,
-        afil: this.a,
-        name: this.n,
-        fono: this.f
+        user: this.user,
       }
     }
     this.router.navigate(['/editar-cuenta'], navigationExtras);

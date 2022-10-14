@@ -1,5 +1,5 @@
 
-<ion-menu *ngIf="a == 1" side="start" menuId="menuConductor" contentId="main">
+<ion-menu *ngIf="user.idRol == 1" side="start" menuId="menuConductor" contentId="main">
   <ion-header>
     <ion-toolbar [translucent] = "true">
       <ion-title>Menu</ion-title>
@@ -79,7 +79,7 @@
     </ion-fab-button>
   </ion-fab>
   <!-- Menu Conductor -->
-  <ion-fab *ngIf="a == 1" vertical="bottom" horizontal="start" slot="fixed">
+  <ion-fab *ngIf="user.idRol == 1" vertical="bottom" horizontal="start" slot="fixed">
     <ion-fab-button (click)="openMenu()" size="small">
       <ion-icon name="car"></ion-icon>
     </ion-fab-button>

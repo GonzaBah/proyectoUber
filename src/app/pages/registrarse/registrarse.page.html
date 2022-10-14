@@ -11,47 +11,36 @@
   <ion-list lines="full" class="ion-no-margin">
     <ion-card>
       <ion-card-content>
-        <ion-input placeholder="Nombre Apellido" [(ngModel)] = "n" type="text"></ion-input>
+        <ion-input placeholder="Nombre" [(ngModel)] = "nom" type="text"></ion-input>
+      </ion-card-content>
+    </ion-card>
+    <ion-card>
+      <ion-card-content>
+        <ion-input placeholder="Apellido" [(ngModel)] = "apell" type="text"></ion-input>
       </ion-card-content>
     </ion-card>
     <ion-card style="margin: 15px auto" class="card-center">
       <ion-card-content>
-        <ion-input placeholder="RUT sin puntos con guion" [(ngModel)] = "r" type="text"></ion-input>
-      </ion-card-content>
-    </ion-card>
-    <ion-card style="max-width: 59%;" class="card-center">
-      <ion-card-content>
-        <ion-datetime-button style="margin-top: -5px; margin-bottom: -5px;" datetime="datetime"></ion-datetime-button>
+        <ion-input placeholder="RUT con puntos y guion" [(ngModel)] = "rut" type="text"></ion-input>
       </ion-card-content>
     </ion-card>
     <ion-card>
       <ion-card-content>
-        <ion-input placeholder="Correo" [(ngModel)] = "u" type="email"></ion-input>
+        <ion-input placeholder="Correo" [(ngModel)] = "correo" type="email"></ion-input>
       </ion-card-content>
     </ion-card>
     <ion-card>
       <ion-card-content>
-        <ion-input placeholder="Contraseña" [(ngModel)] = "p" type="password"></ion-input>
+        <ion-input placeholder="Contraseña" [(ngModel)] = "pass" type="password"></ion-input>
       </ion-card-content>
     </ion-card>
     <ion-card>
       <ion-card-content>
-        <ion-input placeholder="Teléfono" [(ngModel)] = "f" type="number"></ion-input>
+        <ion-input placeholder="Repetir Contraseña" [(ngModel)] = "pass2" type="password"></ion-input>
       </ion-card-content>
     </ion-card>
   </ion-list>
   <center>
     <ion-button shape="round" (click)="registrarse()">Registrarse</ion-button>
   </center>
-  
-  <!-- Modal del Calendario -->
-  <ion-modal [keepContentsMounted]="true">
-    <ng-template>
-      <ion-datetime
-        [showDefaultButtons]="true" 
-        doneText="Aceptar"
-        cancelText="Cancelar"
-        presentation="date" id="datetime"></ion-datetime>
-    </ng-template>
-  </ion-modal>
 </ion-content>

@@ -16,20 +16,7 @@ export class HomePage implements OnInit {
 
   correo: string = "";
   pass: string = "";
-
-  arrayUsers: any = [
-    {
-      id: '',
-      rut: '',
-      nombre: '',
-      apellido: '',
-      correo: '',
-      clave: '',
-      rolId: '',
-    }
-
-  ]
-
+  arrayUser: Usuario[] = [];
   constructor(public toastController: ToastController, private router: Router, private animationCtrl: AnimationController, private wayplaceDB: SqliteService) {
 
   }
@@ -51,26 +38,28 @@ export class HomePage implements OnInit {
     toast.present();
   }
   async login() {
-    let users: Usuario[] = [];
     const sleep = (ms: number) => new Promise((r) => setTimeout(r, ms));
+    let ini = 0;
     this.varProg = true;
     await sleep(1500);
-    /*this.wayplaceDB.database.executeSql("select * from usuario", []).then(function (data) {
-      for (let i = 0; i < data.rows.length; i++) {
-        users[i] = ({
-          id: data.rows.item(i).idusuario,
-          rut: data.rows.item(i).rut,
-          nombre: data.rows.item(i).nombre,
-          apellido: data.rows.item(i).apellido,
-          correo: data.rows.item(i).correo,
-          clave: data.rows.item(i).clave,
-          idRol: data.rows.item(i).id_rol
-        });
+    for(let i of this.arrayUser){
+      if(this.correo == i.correo && this.pass == i.clave){
+        let navigationExtras: NavigationExtras = {
+          state: {
+            user: i
+          }
+        }
+        this.inicioToast(i.nombre);
+        await this.router.navigate(['/principal'], navigationExtras);
+        ini++;
+        break;
+      }else{
+        console.log("Siguiente Usuario");
       }
-      console.log("USUARIO 0: "+users[0].correo);
-    }).catch((e) => {
-      console.log("HUBO UN ERROR EN EL SELECT FROM USUARIO")
-    })*/
+    }
+    if (ini == 0){
+      this.errorToast();
+    }
     this.varProg = false;
   }
 
@@ -78,7 +67,7 @@ export class HomePage implements OnInit {
     this.wayplaceDB.dbState().subscribe(res => {
       if (res) {
         this.wayplaceDB.fetchUsers().subscribe(item => {
-          this.arrayUsers = item;
+          this.arrayUser = item;
         })
       }
     })

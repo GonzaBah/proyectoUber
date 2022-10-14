@@ -13,7 +13,7 @@
       <ion-img src="assets\images\noperfil.jpg" class="fotoperfil"></ion-img>
       
     </div>
-    <h5 style="margin-right: 5px;">{{ n }}</h5>
+    <h5 style="margin-right: 5px;">{{ user.nombre + " " + user.apellido }}</h5>
     <ion-icon (click)="editarPerfil()" style="cursor: pointer;" size="small" name="create-outline"></ion-icon>
   </div>
 
@@ -49,12 +49,12 @@
       <ion-icon style="margin-top: 6%; margin-right: 4px;" size="small" name="cog-outline"></ion-icon>
       <h6 [routerLink]="['/configuracion']">Configuración</h6>
     </div>-->
-    <div *ngIf = "a == 1" [routerLink] = "['/vehiculo']" class="section1">
+    <div *ngIf = "user.idRol == 1" [routerLink] = "['/vehiculo']" class="section1">
       <ion-icon style="margin-right: 4px;" size="small" name="car-sport-outline"></ion-icon>
       <h6>Ajustes Vehiculo</h6>
     </div>
 
-    <div *ngIf = "a == 0" class="section1">
+    <div *ngIf = "user.idRol == 0" class="section1">
       <ion-icon style="margin-right: 4px;" size="small" name="car-outline"></ion-icon>
       <h6 [routerLink] = "['/ser-afiliado']">Ser conductor WayPlace</h6>
     </div>
