@@ -24,3 +24,25 @@
     top: 45px;
     left: 0px;
 }
+
+#indicators {
+    padding: 16px;
+    height: 40%;
+    width: 100%;
+    overflow-y: auto;
+    display: block;
+  }
+
+#map2 {
+    height: 100%;
+  }
+  
+  /* 
+   * Optional: Makes the sample page fill the window. 
+   */
+ion-content {
+    height: 100%;
+    margin: 0;
+    padding: 0;
+  }
+  

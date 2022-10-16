@@ -10,6 +10,12 @@ const {Geolocation} = Plugins;
 //Anyplugin
 declare var google: any;
 
+declare global {
+  interface Window {
+    initMap: () => void;
+  }
+}
+
 @Component({
   selector: 'app-googlemaps',
   templateUrl: './googlemaps.component.html',
@@ -17,17 +23,18 @@ declare var google: any;
 })
 export class GooglemapsComponent implements OnInit {
 
+
   //Coordenada predeterminada
   @Input() position = {
-    lat: -2.898116,
-    lng: -78.99958149999999,
+    lat: -33.363438206556474,
+    lng: -70.67831039428711,
   };
 
   label = {
     titulo:"Ubicación",
     subtitulo: "Ubicación de envío"
   }
-
+  map2: any;
   map: any;
   marker: any;
   infowindow: any;
@@ -37,11 +44,24 @@ export class GooglemapsComponent implements OnInit {
 
   constructor(private renderer: Renderer2, @Inject(DOCUMENT) private document,
               private googlemapsService: GooglemapsService,
-              public modalController: ModalController) { }
+              public modalController: ModalController, public geo: Geolocation) { }
 
   ngOnInit(): void {
     this.init();
   }
+
+
+
+  mapInit(): void {
+    this.map2 = new google.maps.Map(document.getElementById("map2") as HTMLElement, {
+      center: { lat: -34.397, lng: 150.644 },
+      zoom: 8,
+    });
+  }
+  
+
+
+  
 
   async init(){
 
@@ -138,4 +158,11 @@ export class GooglemapsComponent implements OnInit {
     this.modalController.dismiss({pos: this.positionSet})
   }
 
+
+
+
+
+    
+
 }
+

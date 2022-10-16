@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { ModalController } from '@ionic/angular';
-import { GooglemapsComponent } from 'src/app/googlemaps/googlemaps.component';
 import { Cliente } from 'src/app/models';
+import { GooglemapsComponent } from 'src/app/googlemaps/googlemaps.component';
 
 @Component({
   selector: 'app-configuracion',
@@ -15,9 +15,10 @@ export class ConfiguracionPage implements OnInit {
   };
   
   
-  constructor(private modalController:  ModalController) { }
+  constructor(private modalController:  ModalController, private gugu: GooglemapsComponent) { }
 
   ngOnInit() {
+    this.gugu.mapInit();
   }
 
   async addDirection(){
@@ -44,5 +45,7 @@ export class ConfiguracionPage implements OnInit {
       console.log('this.cliente ->', this.cliente);
     }
   }
+
+  
 
 }

@@ -2,6 +2,8 @@
 import { NgModule } from '@angular/core';
 import { PreloadAllModules, RouterModule, Routes } from '@angular/router';
 
+
+
 const routes: Routes = [
   {
     path: '',
@@ -68,7 +70,8 @@ const routes: Routes = [
   {
     path: 'asientos',
     loadChildren: () => import('./pages/asientos/asientos.module').then( m => m.AsientosPageModule)
-  },  {
+  },
+  {
     path: 'historial-pagos',
     loadChildren: () => import('./pages/historial-pagos/historial-pagos.module').then( m => m.HistorialPagosPageModule)
   },
@@ -76,6 +79,39 @@ const routes: Routes = [
     path: 'vehiculo',
     loadChildren: () => import('./pages/vehiculo/vehiculo.module').then( m => m.VehiculoPageModule)
   },
+  {
+    path: 'api-rutas',
+    loadChildren: () => import('./pages/api-rutas/api-rutas.module').then( m => m.ApiRutasPageModule)
+  },
+  {
+    path: 'gugolmapo',
+    loadChildren: () => import('./pages/gugolmapo/gugolmapo.module').then( m => m.GugolmapoPageModule)
+  },
+  {
+    path: 'mapaqliao',
+    loadChildren: () => import('./pages/mapaqliao/mapaqliao.module').then( m => m.MapaqliaoPageModule)
+  },
+  {
+    path: 'mapaqliao2',
+    loadChildren: () => import('./pages/mapaqliao2/mapaqliao2.module').then( m => m.Mapaqliao2PageModule)
+  },
+  {
+    path: 'mapaqliao3',
+    loadChildren: () => import('./pages/mapaqliao3/mapaqliao3.module').then( m => m.Mapaqliao3PageModule)
+  },
+  {
+    path: 'rutas',
+    loadChildren: () => import('./pages/rutas/rutas.module').then( m => m.RutasPageModule)
+  },  {
+    path: 'api-rutas2',
+    loadChildren: () => import('./pages/api-rutas2/api-rutas2.module').then( m => m.ApiRutas2PageModule)
+  },
+
+
+
+
+
+
 
 
 
