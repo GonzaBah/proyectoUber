@@ -1,0 +1,40 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-back-button></ion-back-button>
+    </ion-buttons>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <ion-list lines="full" class="ion-no-margin">
+    <ion-card>
+      <ion-label style="padding-left: 40px">Marca</ion-label>
+      <ion-card-content>
+        <ion-label *ngIf="varEd == 0">{{ marca }}</ion-label>
+        <ion-input *ngIf="varEd == 1" [(ngModel)]="marca" value="{{ marca }}" type="text"></ion-input>
+      </ion-card-content>
+    </ion-card>
+    <ion-card lines="full" class="ion-no.margin">
+      <ion-label style="padding-left: 40px">Modelo</ion-label>
+      <ion-card-content>
+        <ion-label *ngIf="varEd == 0">{{ modelo }}</ion-label>
+        <ion-input *ngIf="varEd == 1" [(ngModel)]="modelo" value="{{ modelo }}" type="text"></ion-input>
+      </ion-card-content>
+    </ion-card>
+    <ion-card lines="full" class="ion-no.margin">
+      <ion-label style="padding-left: 40px">Patente</ion-label>
+      <ion-card-content>
+        <ion-label *ngIf="varEd == 0">{{ patente }}</ion-label>
+        <ion-input *ngIf="varEd == 1" [(ngModel)]="patente" value="{{ patente }}" type="text"></ion-input>
+      </ion-card-content>
+    </ion-card>
+    <ion-img src="assets/images/auto4.png"></ion-img>
+    <ion-button color="dark" *ngIf="varEd == 0" (click)="editarVeh(1)" slot="start">Editar Vehiculo</ion-button>
+    <ion-button color="dark" *ngIf="varEd == 1" (click)="editarVeh(0)" slot="start">Aplicar</ion-button>
+  </ion-list>
+  
+  
+  
+  
+</ion-content>

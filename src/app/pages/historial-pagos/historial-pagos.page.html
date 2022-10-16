@@ -1,0 +1,60 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-title></ion-title>
+    <ion-buttons slot="start">
+      <ion-back-button></ion-back-button>
+    </ion-buttons>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <div class="content">
+    <ion-list>
+      <ion-list-header style="font-size: 20px;"> Historial de pagos </ion-list-header>
+
+      <ion-item>
+        <ion-avatar slot="start">
+          <img src="assets\images\conductor2.jpg" />
+        </ion-avatar>
+        <ion-label>
+          <p style="font-size: 14px;">Samuel de Luque</p>
+          <p style="display: flex; font-size: 11px;">13 Agosto - 20:00</p>
+          
+        </ion-label>
+
+        <ion-label slot="end"><p>{{ num|currency}}</p></ion-label>
+
+      </ion-item>
+
+      <ion-item>
+        <ion-avatar slot="start">
+          <img src="assets\images\conductor3.jpg" />
+        </ion-avatar>
+        <ion-label>
+          <p style="font-size: 14px;">Willyrex</p>
+          <p style="display: flex; font-size: 11px;">21 Septiembre - 19:00</p>
+          
+        </ion-label>
+
+        <ion-label slot="end"><p>{{ num|currency}}</p></ion-label>
+
+      </ion-item>
+
+      <ion-item>
+        <ion-avatar slot="start">
+          <img src="assets\images\conductor4.jpg" />
+        </ion-avatar>
+        <ion-label>
+          <p style="font-size: 14px;">A B O G A D O </p>
+          <p style="display: flex; font-size: 11px;">92 Enero - 22:00</p>
+          
+        </ion-label>
+
+        <ion-label slot="end"><p>{{ num|currency}}</p></ion-label>
+
+      </ion-item>
+    </ion-list>
+  </div>
+
+
+</ion-content>

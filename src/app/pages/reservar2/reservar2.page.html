@@ -1,0 +1,82 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-title></ion-title>
+    <ion-buttons slot="start">
+      <ion-back-button></ion-back-button>
+    </ion-buttons>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+
+
+  <ion-list>
+    <ion-list-header style="font-size: 20px;" > Reservas Disponibles </ion-list-header>
+
+    <ion-item  (click)="presentAlert()">
+      <ion-avatar slot="start">
+        <img src="assets\images\conductor2.jpg" />
+      </ion-avatar>
+      <ion-label >
+        <p [(ngModel)]="users" *ngIf= "id_rol == 2" style="font-size: 14px;">{{nombre}}</p>
+        <p style="display: flex; font-size: 11px;">Horario: 20:30</p>       
+      </ion-label>
+    </ion-item>
+
+    <ion-item>
+      <ion-avatar slot="start">
+        <img src="assets\images\conductor3.jpg" />
+      </ion-avatar>
+      <ion-label>
+        <p style="font-size: 14px;">Jesse HombreRosa</p>
+        <p style="display: flex; font-size: 11px;">Horario: 21:30</p>       
+      </ion-label>
+    </ion-item>
+
+    <ion-item>
+      <ion-avatar slot="start">
+        <img src="assets\images\conductor4.jpg" />
+      </ion-avatar>
+      <ion-label>
+        <p style="font-size: 14px;">Saul HombreBueno</p>
+        <p style="display: flex; font-size: 11px;">Horario: 22:00</p>       
+      </ion-label>
+    </ion-item>
+
+    <ion-item>
+      <ion-avatar slot="start">
+        <img src="assets\images\conductor1.jpg" />
+      </ion-avatar>
+      <ion-label>
+        <p style="font-size: 14px;">McLovin</p>
+        <p style="display: flex; font-size: 11px;">Horario: 20:30</p>       
+      </ion-label>
+    </ion-item>
+
+    <ion-item>
+      <ion-avatar slot="start">
+        <img src="assets\images\conductor1.jpg" />
+      </ion-avatar>
+      <ion-label>
+        <p style="font-size: 14px;">McLovin2</p>
+        <p style="display: flex; font-size: 11px;">Horario: 20:30</p>       
+      </ion-label>
+    </ion-item>
+
+    <ion-item>
+      <ion-avatar slot="start">
+        <img src="assets\images\conductor1.jpg" />
+      </ion-avatar>
+      <ion-label>
+        <p style="font-size: 14px;">McLovin3</p>
+        <p style="display: flex; font-size: 11px;">Horario: 20:30</p>       
+      </ion-label>
+    </ion-item>
+
+  </ion-list>
+
+
+
+
+
+</ion-content>
