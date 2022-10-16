@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { AlertController } from '@ionic/angular';
+import { ApiRestService } from 'src/app/api-rest.service';
+
 
 @Component({
   selector: 'app-reservar2',
@@ -8,10 +10,24 @@ import { AlertController } from '@ionic/angular';
 })
 export class Reservar2Page implements OnInit {
   hideMe: boolean;
+  users: any;
+  autos: any;
 
-  constructor(private alertController: AlertController) { }
+  constructor(private alertController: AlertController, private api: ApiRestService) { }
 
-  ngOnInit() {
+  ngOnInit(): void {
+    this.api.getUsers().subscribe((rrr)=>{
+      this.users=rrr;
+    },(error)=>{
+      console.log(error);
+    })
+
+    this.api.getAutos().subscribe((res)=>{
+      this.autos=res;
+      },(error)=>{
+      console.log(error);
+      })
+     
   }
 
   async presentAlert(){

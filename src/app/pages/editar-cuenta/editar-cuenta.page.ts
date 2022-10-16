@@ -3,6 +3,7 @@ import { ActivatedRoute, Router } from '@angular/router';
 import { ToastController } from '@ionic/angular';
 import { SqliteService } from 'src/app/services/sqlite.service';
 import { Usuario } from 'src/app/services/usuario';
+import { CamaraApiService } from 'src/app/services/camara-api.service';
 
 @Component({
   selector: 'app-editar-cuenta',
@@ -17,7 +18,7 @@ export class EditarCuentaPage implements OnInit {
   user: Usuario;
 
   
-  constructor(private toastController: ToastController, private router: Router, private activedRouter: ActivatedRoute, private wayplaceDB: SqliteService) {
+  constructor(private toastController: ToastController, private photoService: CamaraApiService, private router: Router, private activedRouter: ActivatedRoute, private wayplaceDB: SqliteService) {
     this.activedRouter.queryParams.subscribe(params =>{
       if(this.router.getCurrentNavigation().extras.state){
         this.user = this.router.getCurrentNavigation().extras.state.user;
@@ -25,6 +26,10 @@ export class EditarCuentaPage implements OnInit {
     })
 
    }
+  
+  tomarFoto(){
+    this.photoService.takePicture();
+  }
 
   async msgToast(msg: string){
     const toast = await this.toastController.create({

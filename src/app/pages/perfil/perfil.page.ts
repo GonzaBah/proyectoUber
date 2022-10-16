@@ -11,6 +11,7 @@ import { Usuario } from 'src/app/services/usuario';
 })
 export class PerfilPage implements OnInit {
   categories: Category[] = [];
+  foto: any;
 
   user: Usuario;
   constructor(private router: Router, private activedRouter: ActivatedRoute) {
@@ -21,8 +22,11 @@ export class PerfilPage implements OnInit {
     })
    }
 
+
   ngOnInit() {
     this.getCategories();
+
+
   }
 
   editarPerfil(){

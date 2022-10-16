@@ -1,6 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { NavigationExtras, Router } from '@angular/router';
 import { AlertController, AnimationController, ToastController, Animation } from '@ionic/angular';
+import { ApiRestService } from '../api-rest.service';
+import { GooglemapsComponent } from '../googlemaps/googlemaps.component';
 import { SqliteService } from '../services/sqlite.service';
 import { Usuario } from '../services/usuario';
 
@@ -12,17 +14,21 @@ import { Usuario } from '../services/usuario';
 export class HomePage implements OnInit {
   //Usuarios predefinidos
 
+  users: any;
+  autos: any;
+
   varProg: boolean = false;
 
   correo: string = "";
   pass: string = "";
   arrayUser: Usuario[] = [];
-  constructor(public toastController: ToastController, private router: Router, private animationCtrl: AnimationController, private wayplaceDB: SqliteService) {
+  
 
+  constructor(public toastController: ToastController, private router: Router, private animationCtrl: AnimationController, private wayplaceDB: SqliteService, private api: ApiRestService) {
+    
   }
-
-
-  async inicioToast(var1: string) {
+  
+  async inicioToast(var1: string){
     const toast = await this.toastController.create({
       message: 'Bienvenido ' + var1,
       duration: 1500
@@ -71,6 +77,17 @@ export class HomePage implements OnInit {
         })
       }
     })
+    this.api.getUsers().subscribe((rrr)=>{
+      this.users=rrr;
+    },(error)=>{
+      console.log(error);
+    })
+
+    this.api.getAutos().subscribe((res)=>{
+      this.autos=res;
+      },(error)=>{
+      console.log(error);
+      })
   }
 }
 
