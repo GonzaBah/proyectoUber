@@ -1,4 +1,7 @@
+declare var google: any;
+
 import { Component, OnInit } from '@angular/core';
+import { Geolocation } from '@awesome-cordova-plugins/geolocation/ngx';
 
 @Component({
   selector: 'app-reservar',
@@ -7,9 +10,11 @@ import { Component, OnInit } from '@angular/core';
 })
 export class ReservarPage implements OnInit {
 
-  constructor() { }
 
-  ngOnInit() {
+  constructor(private GeoLocalizacion: Geolocation) {
+
   }
-
+  ngOnInit(): void {
+    
+  }
 }

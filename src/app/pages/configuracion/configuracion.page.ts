@@ -18,11 +18,11 @@ export class ConfiguracionPage implements OnInit {
   constructor(private modalController:  ModalController, private gugu: GooglemapsComponent) { }
 
   ngOnInit() {
-    this.gugu.mapInit();
+    
   }
 
   async addDirection(){
-    
+    this.gugu.init();
     const ubicacion = this.cliente.ubicacion
     let positionInput = {
       lat: -2.898116,

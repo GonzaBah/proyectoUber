@@ -2,6 +2,8 @@ import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, NavigationExtras, Router } from '@angular/router';
 import { MenuController } from '@ionic/angular';
 import { Category } from 'src/app/models/category.model';
+import { Auto } from 'src/app/services/auto';
+import { SqliteService } from 'src/app/services/sqlite.service';
 import { Usuario } from 'src/app/services/usuario';
 
 @Component({
@@ -14,7 +16,9 @@ export class PerfilPage implements OnInit {
   foto: any;
 
   user: Usuario;
-  constructor(private router: Router, private activedRouter: ActivatedRoute) {
+  arrayAuto: Auto[];
+
+  constructor(private router: Router, private activedRouter: ActivatedRoute, private wayplaceDB: SqliteService) {
     this.activedRouter.queryParams.subscribe(params =>{
       if(this.router.getCurrentNavigation().extras.state){
         this.user = this.router.getCurrentNavigation().extras.state.user;
@@ -22,13 +26,29 @@ export class PerfilPage implements OnInit {
     })
    }
 
+  async verVehiculo(){
+    let auto: Auto;
 
-  ngOnInit() {
-    this.getCategories();
-
-
+    for (let i of this.arrayAuto){
+      console.log("PRUEBA "+i+": "+JSON.stringify(i)+" "+this.user.id);
+      if(i.idUsuario == this.user.id){
+        auto = i;
+        console.log("PRUEBA: "+JSON.stringify(auto));
+      }
+    }
+    if(auto){
+      let navigationExtras: NavigationExtras = {
+        state: {
+          user: this.user,
+          auto: auto
+        }
+      }
+      await this.router.navigate(['/vehiculo'], navigationExtras);
+    }else{
+      console.log("VEHICULO NO ESTA REGISTRADO");
+    }
+    
   }
-
   editarPerfil(){
     let navigationExtras: NavigationExtras = {
       state: {
@@ -67,5 +87,15 @@ export class PerfilPage implements OnInit {
       },
     ];
   }
+  ngOnInit() {
+    this.getCategories();
+    this.wayplaceDB.dbState().subscribe(res => {
+      if (res) {
+        this.wayplaceDB.fetchAutos().subscribe(item => {
+          this.arrayAuto = item;
+        })
+      }
+    })
 
+  }
 }

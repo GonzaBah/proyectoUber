@@ -84,25 +84,6 @@ const routes: Routes = [
     loadChildren: () => import('./pages/api-rutas/api-rutas.module').then( m => m.ApiRutasPageModule)
   },
   {
-    path: 'gugolmapo',
-    loadChildren: () => import('./pages/gugolmapo/gugolmapo.module').then( m => m.GugolmapoPageModule)
-  },
-  {
-    path: 'mapaqliao',
-    loadChildren: () => import('./pages/mapaqliao/mapaqliao.module').then( m => m.MapaqliaoPageModule)
-  },
-  {
-    path: 'mapaqliao2',
-    loadChildren: () => import('./pages/mapaqliao2/mapaqliao2.module').then( m => m.Mapaqliao2PageModule)
-  },
-  {
-    path: 'mapaqliao3',
-    loadChildren: () => import('./pages/mapaqliao3/mapaqliao3.module').then( m => m.Mapaqliao3PageModule)
-  },
-  {
-    path: 'rutas',
-    loadChildren: () => import('./pages/rutas/rutas.module').then( m => m.RutasPageModule)
-  },  {
     path: 'api-rutas2',
     loadChildren: () => import('./pages/api-rutas2/api-rutas2.module').then( m => m.ApiRutas2PageModule)
   },

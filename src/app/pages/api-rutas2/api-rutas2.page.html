@@ -8,8 +8,7 @@
   <!--<ion-button (click)="mapRuta()" type="Submit"></ion-button>
   <h1>La distancia es: {{distancia}}</h1>-->
   
-  <div>
-  <form [formGroup]="formMapa"  (ngSubmit)="route()" >
+  <div [formGroup]="formMapa"  (ngSubmit)="route()" >
 
     <input 
         id="origin-input"
@@ -19,7 +18,7 @@
         formControlName="origineishon"
       />
 
-  <input
+    <input
         id="destination-input"
         class="controls"
         type="text"
@@ -28,8 +27,7 @@
       />
 
   
-  </form>
-  </div>  
+  </div>
   <div class="mapa" #divMap></div>
 
   <ion-button class="boton1" size="default" expand="block" (click)="calcularRuta()">Calcular ruta</ion-button>

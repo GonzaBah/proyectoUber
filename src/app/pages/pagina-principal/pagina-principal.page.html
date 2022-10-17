@@ -54,12 +54,12 @@
           <p class="textubc" style="font-size: large; font-family:'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif ; color: rgba(255, 255, 255, 0.91);">
             Escoge tu ubicación <br> <ion-icon style="color: rgba(0, 0, 0, 0.743);" name="caret-down-outline"></ion-icon></p>
             
-            <ion-img [routerLink] = "['/api-rutas2']" src="assets\images\mapa.jpg" class="fotomapa"></ion-img>
+            
         </ion-col>
       </ion-row>
     </ion-grid>
   </div>
-  <ion-fab-button (click)="addPhoto"></ion-fab-button>
+  <div #mapElement class="map"></div>
   <!-- Icono Perfil -->
   <ion-fab vertical="bottom" horizontal="end" slot="fixed">
     <ion-fab-button (click)="abrirPerfil()" color="dark" size="small">

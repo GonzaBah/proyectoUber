@@ -5,6 +5,7 @@ import { BehaviorSubject, Observable } from 'rxjs';
 import { Auto } from './auto';
 import { Marca } from './marca';
 import { Usuario } from './usuario';
+import { Viaje } from './viaje';
 
 @Injectable({
   providedIn: 'root'
@@ -15,6 +16,7 @@ export class SqliteService {
   listaUsuarios = new BehaviorSubject([]);
   listaAutos = new BehaviorSubject([]);
   listaMarcas = new BehaviorSubject([]);
+  listaViajes = new BehaviorSubject([]);
   //Lista de Marcas a registrar
   Marcas = ['Audi', 'Bentley', 'BMW', 'Chevrolet', 'Citroen', 'Dacia', 'Ford', 'Fiat', 'Hyundai', 'Honda', 'Infiniti', 'KIA', 'Land-Rover', 'Lexus', 'Nissan', 'Open', 'Peugeot', 'Porsche', 'Renault', 'Subaru', 'Suzuki', 'Toyota'];
   //String con la creación de tablas
@@ -23,11 +25,13 @@ export class SqliteService {
   tablaMarca: string = "create table if not exists marca(idmarca Integer Primary Key autoincrement, nombreMarca VARCHAR(20) NOT NULL);";
 
   tablaUser: string = "create table if not exists usuario(idusuario Integer Primary Key autoincrement, rut VARCHAR(15) NOT NULL, nombre VARCHAR(50) NOT NULL, apellido VARCHAR(50) NOT NULL, correo VARCHAR(40) NOT NULL, clave VARCHAR(50) NOT NULL, id_rol Integer, foreign key(id_rol) references rol(idrol));";
+  tablaDir: string = "create table if not exists direccion(idDir Integer Primary Key autoincrement, lat DOUBLE NOT NULL, lon DOUBLE NOT NULL, id_usuario Integer NOT NULL, foreign key(id_usuario) references usuario(idusuario));";
 
   tablaAuto: string = "create table if not exists auto(patente VARCHAR(10) Primary Key, color VARCHAR(20) NOT NULL, modelo VARCHAR(40) NOT NULL, annio Integer NOT NULL, id_usuario Integer NOT NULL, id_marca Integer NOT NULL, foreign key(id_usuario) references usuario(idusuario), foreign key(id_marca) references marca(idmarca));";
   tablaViaje: string = "create table if not exists viaje(idviaje Integer Primary Key autoincrement, fechaViaje DATE NOT NULL, horaSalida VARCHAR(6) NOT NULL, asientoDisp Integer NOT NULL, monto Integer NOT NULL, salida VARCHAR(15) NOT NULL, patenteAuto VARCHAR(10), foreign key(patenteAuto) references auto(patente));";
   tablaDetViaje: string = "create table if not exists detalle_viaje(idDetalle Integer Primary Key autoincrement, status VARCHAR(15) NOT NULL, id_usuario Integer NOT NULL, id_viaje Integer NOT NULL, foreign key(id_usuario) references usuario(idusuario), foreign key(id_viaje) references viaje(idviaje));";
   tablaViajeCom: string = "create table if not exists viajeComuna(id Integer Primary Key autoincrement, id_viaje Integer, id_comuna Integer, foreign key(id_viaje) references viaje(idviaje), foreign key(id_comuna) references comuna(idcomuna));";
+  tablaComentario: string = "create table if not exists comentario(idCom Integer Primary Key autoincrement, textoCom VARCHAR(150) NOT NULL, idViaje Integer, idUsuario Integer, foreign key(idViaje) references viaje(idviaje), foreign key(idUsuario) references usuario(idusuario));";
   //String para pobrar tablas
   RolPasaj: string = "insert or ignore into rol(idrol, nombreRol) values(0, 'Pasajero');";
   RolAfil: string = "insert or ignore into rol(idrol, nombreRol) values(1, 'Afiliado');";
@@ -54,6 +58,9 @@ export class SqliteService {
   fetchMarcas(): Observable<Marca[]> {
     return this.listaMarcas.asObservable();
   }
+  fetchViajes(): Observable<Viaje[]> {
+    return this.listaViajes.asObservable();
+  }
   crearDB() {
     this.sql.create({
       name: 'data.db',
@@ -70,21 +77,28 @@ export class SqliteService {
       await this.database.executeSql(this.tablaRol, []);
       await this.database.executeSql(this.tablaComuna, []);
       await this.database.executeSql(this.tablaMarca, []);
-      await this.database.executeSql(this.tablaUser, [])
-      await this.database.executeSql(this.tablaAuto, [])
+      await this.database.executeSql(this.tablaUser, []);
+      await this.database.executeSql(this.tablaDir, []);
+      await this.database.executeSql(this.tablaAuto, []);
       await this.database.executeSql(this.tablaViaje, []);
       await this.database.executeSql(this.tablaDetViaje, []);
       await this.database.executeSql(this.tablaViajeCom, []);
-
+      await this.database.executeSql(this.tablaComentario, []);
+      //Poblar base de datos
+      await this.database.executeSql("insert or ignore into auto(patente, color, modelo, annio, id_usuario, id_marca) values('AA-AA-11', 'Rojo', '370Z', 2012, 2, 14)", []);
+      await this.database.executeSql("insert or ignore into viaje(idviaje, fechaViaje, horaSalida, asientoDisp, monto, salida, patenteAuto) values(0, '16-10-2022', '10:20', 0, 4700, 'Colina', 'AA-AA-11')", []);
       await this.database.executeSql(this.RolPasaj, []);
       await this.database.executeSql(this.RolAfil, []);
       await this.database.executeSql(this.User1, []);
       await this.database.executeSql(this.User2, []);
+      //Poblar tabla Marca con las Marcas más conocidas
       for (let i=0; i < this.Marcas.length; i++){
         await this.database.executeSql("insert or ignore into marca(idmarca, nombreMarca) values(?,?)", [i, this.Marcas[i]]);
       }
       this.returnUsers();
+      this.returnAutos();
       this.returnMarcas();
+      this.returnViajes();
       this.isDBReady.next(true);
     } catch (e) {
       console.log(e);
@@ -141,7 +155,25 @@ export class SqliteService {
       this.listaAutos.next(items);
     })
   }
-
+  returnViajes(){
+    return this.database.executeSql('select * from viaje', []).then(res => {
+      let items: Viaje[] = [];
+      if (res.rows.length > 0) {
+        for (var i = 0; i < res.rows.length; i++) {
+          items.push({
+            idviaje: res.rows.item(i).idviaje,
+            fechaViaje: res.rows.item(i).fechaViaje,
+            horaSalida: res.rows.item(i).horaSalida,
+            asientosDisp: res.rows.item(i).asientoDisp,
+            monto: res.rows.item(i).monto,
+            salida: res.rows.item(i).salida,
+            patente: res.rows.item(i).patente
+          })
+        }
+      }
+      this.listaViajes.next(items);
+    })
+  }
   agregarUser(rut, nombre, apellido, correo, clave, id_rol) {
     let data = [rut, nombre, apellido, correo, clave, id_rol];
     return this.database.executeSql('insert into usuario(rut, nombre, apellido, correo, clave, id_rol) values (?,?,?,?,?,?)', data).then(res => {
@@ -157,6 +189,12 @@ export class SqliteService {
   agregarAuto(patente, color, modelo, annio, idusuario, idmarca){
     let data = [patente, color, modelo, annio, idusuario, idmarca];
     return this.database.executeSql('insert into auto(patente, color, modelo, annio, id_usuario, id_marca) values (?,?,?,?,?,?)', data).then(res => {
+      this.returnAutos();
+    })
+  }
+  editarAuto(patente, color, modelo, annio, idusuario, idmarca, patente2) {
+    let data = [patente, color, modelo, annio, idusuario, idmarca, patente2];
+    return this.database.executeSql('update auto set patente = ?, color = ?, modelo = ?, annio = ?, id_usuario = ?, id_marca = ? where patente = ?', data).then(res => {
       this.returnAutos();
     })
   }

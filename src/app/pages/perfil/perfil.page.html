@@ -49,9 +49,9 @@
       <ion-icon style="margin-top: 6%; margin-right: 4px;" size="small" name="cog-outline"></ion-icon>
       <h6 [routerLink]="['/configuracion']">Configuración</h6>
     </div>-->
-    <div *ngIf = "user.idRol == 1" [routerLink] = "['/vehiculo']" class="section1">
+    <div *ngIf = "user.idRol == 1" class="section1">
       <ion-icon style="margin-right: 4px;" size="small" name="car-sport-outline"></ion-icon>
-      <h6>Ajustes Vehiculo</h6>
+      <h6 (click)="verVehiculo()">Ajustes Vehiculo</h6>
     </div>
 
     <div *ngIf = "user.idRol == 0" class="section1">

@@ -32,7 +32,7 @@ export class ApiRutas2Page implements OnInit {
 
   constructor(private renderer: Renderer2, private GeoLocalizacion: Geolocation) { 
     this.formMapas = new FormGroup({
-      busqueda: new FormControl(''),
+      busqueda: new FormControl(),
     });
 
     this.originPlaceId = "";
@@ -115,8 +115,6 @@ export class ApiRutas2Page implements OnInit {
 
   //calcular ruta
   mapRuta() {
-
-  
 
     this.directionsRenderer.setMap(this.mapa);
 

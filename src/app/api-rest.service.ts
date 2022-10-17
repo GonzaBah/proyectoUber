@@ -17,7 +17,8 @@ export class ApiRestService {
     })
     }   
 
-    apiURL = 'http://localhost:3000';
+    apiURL = 'https://my-json-server.typicode.com/victorrosendo/repoUsuariosRamos';
+    apiURL2 = 'https://my-json-server.typicode.com/victorrosendo/repoListadoAutos';
 
   constructor(private http:HttpClient) { }
 
@@ -34,13 +35,13 @@ export class ApiRestService {
   }
 
   getAuto(id):Observable<any>{
-    return this.http.get(this.apiURL+'/autos/'+id).pipe(
+    return this.http.get(this.apiURL2+'/autos/'+id).pipe(
     retry(3)
     );
   }
 
   getAutos():Observable<any>{
-    return this.http.get(this.apiURL+'/autos/').pipe(
+    return this.http.get(this.apiURL2+'/autos/').pipe(
     retry(3)
     );
   }
