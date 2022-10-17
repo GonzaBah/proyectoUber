@@ -44,6 +44,7 @@ export class ConfiguracionPage implements OnInit {
       this.cliente.ubicacion = data.pos;
       console.log('this.cliente ->', this.cliente);
     }
+    
   }
 
   

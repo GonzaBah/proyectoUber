@@ -16,7 +16,7 @@ export class EditarCuentaPage implements OnInit {
 
   arrayUser: Usuario[];
   user: Usuario;
-
+  arrayPhoto: any[];
   
   constructor(private toastController: ToastController, private photoService: CamaraApiService, private router: Router, private activedRouter: ActivatedRoute, private wayplaceDB: SqliteService) {
     this.activedRouter.queryParams.subscribe(params =>{
@@ -28,6 +28,7 @@ export class EditarCuentaPage implements OnInit {
    }
   
   tomarFoto(){
+    
     this.photoService.takePicture();
   }
 
@@ -109,5 +110,10 @@ export class EditarCuentaPage implements OnInit {
         })
       }
     })
+    this.photoService.fetchFoto().subscribe(item => {
+      this.arrayPhoto = item;
+    })
+    console.log("PRUEBA: "+JSON.stringify(this.arrayPhoto))
   }
+  
 }

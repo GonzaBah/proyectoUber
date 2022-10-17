@@ -2,6 +2,7 @@ import { Injectable } from '@angular/core';
 import { SQLite, SQLiteObject } from '@awesome-cordova-plugins/sqlite/ngx';
 import { Platform } from '@ionic/angular';
 import { BehaviorSubject, Observable } from 'rxjs';
+import { ApiRestService } from '../api-rest.service';
 import { Auto } from './auto';
 import { Marca } from './marca';
 import { Usuario } from './usuario';
@@ -13,6 +14,10 @@ import { Viaje } from './viaje';
 export class SqliteService {
   public database: SQLiteObject;
   private isDBReady: BehaviorSubject<boolean> = new BehaviorSubject(false);
+
+  arrayApiUsers: any[];
+  users: any;
+
   listaUsuarios = new BehaviorSubject([]);
   listaAutos = new BehaviorSubject([]);
   listaMarcas = new BehaviorSubject([]);
@@ -38,10 +43,15 @@ export class SqliteService {
   User1: string = "insert or ignore into usuario(idusuario, rut, nombre, apellido, correo, clave, id_rol) values (1, '111-1', 'User', 'Name', 'user@mail.com', '1234', 0)";
   User2: string = "insert or ignore into usuario(idusuario, rut, nombre, apellido, correo, clave, id_rol) values (2, '222-2', 'Chimba', 'Rongo', 'chimba@rongo.com', 'chimba', 1)";
 
-  constructor(public sql: SQLite, private platform: Platform) {
+  constructor(public sql: SQLite, private platform: Platform, private apiRest: ApiRestService) {
     this.platform.ready().then(() => {
       this.crearDB();
-    }).catch(e => console.log("NO FUNCIONA!!!"))
+    }).catch(e => console.log("NO FUNCIONA!!!"));
+    
+    this.users = apiRest.getUsers();
+    this.users.subscribe(item => {
+      this.arrayApiUsers = item;
+    })
   }
 
   dbState() {
@@ -74,6 +84,10 @@ export class SqliteService {
 
   async tablasDB() {
     try {
+      //API EXTERNA
+      let users = this.apiRest.getUsers();
+      console.log("PRUEBA API: "+JSON.stringify(this.arrayApiUsers));
+
       await this.database.executeSql(this.tablaRol, []);
       await this.database.executeSql(this.tablaComuna, []);
       await this.database.executeSql(this.tablaMarca, []);
@@ -197,5 +211,8 @@ export class SqliteService {
     return this.database.executeSql('update auto set patente = ?, color = ?, modelo = ?, annio = ?, id_usuario = ?, id_marca = ? where patente = ?', data).then(res => {
       this.returnAutos();
     })
+  }
+  agregarViaje(){
+
   }
 }

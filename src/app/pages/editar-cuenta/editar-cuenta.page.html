@@ -15,7 +15,7 @@
       <ion-col size="5">
         <div class="avatar">
           <ion-img src="assets\images\noperfil.jpg" class="fotoperfil"></ion-img>
-          <ion-icon style="cursor: pointer;" size="large" name="create-outline" class="edit"></ion-icon>
+          <ion-icon (click)="tomarFoto()" style="cursor: pointer;" size="large" name="create-outline" class="edit"></ion-icon>
           <ion-label *ngIf="user.idRol == 1">Conductor/Pasajero</ion-label>
           <ion-label *ngIf="user.idRol == 0">Pasajero</ion-label>
           

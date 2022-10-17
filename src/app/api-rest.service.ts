@@ -17,31 +17,30 @@ export class ApiRestService {
     })
     }   
 
-    apiURL = 'https://my-json-server.typicode.com/victorrosendo/repoUsuariosRamos';
-    apiURL2 = 'https://my-json-server.typicode.com/victorrosendo/repoListadoAutos';
+    apiURL = 'https://my-json-server.typicode.com/victorrosendo';
 
   constructor(private http:HttpClient) { }
 
   getUser(id):Observable<any>{
-    return this.http.get(this.apiURL+'/users/'+id).pipe(
+    return this.http.get(this.apiURL+'/repoUsuariosRamos/users/'+id).pipe(
     retry(3)
     );
   }
 
   getUsers():Observable<any>{
-    return this.http.get(this.apiURL+'/users/').pipe(
+    return this.http.get(this.apiURL+'/repoUsuariosRamos/users/').pipe(
     retry(3)
     );
   }
 
   getAuto(id):Observable<any>{
-    return this.http.get(this.apiURL2+'/autos/'+id).pipe(
+    return this.http.get(this.apiURL+'/repoListadoAutos/autos/'+id).pipe(
     retry(3)
     );
   }
 
   getAutos():Observable<any>{
-    return this.http.get(this.apiURL2+'/autos/').pipe(
+    return this.http.get(this.apiURL+'/repoListadoAutos/autos/').pipe(
     retry(3)
     );
   }

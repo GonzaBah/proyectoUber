@@ -1,13 +1,15 @@
-import { AfterContentInit, Component, OnInit, Renderer2, ViewChild } from '@angular/core';
+///<reference path="../../../../node_modules/@types/googlemaps/index.d.ts"/>
+import { AfterContentInit, Component, ElementRef, OnInit, Renderer2, ViewChild } from '@angular/core';
 import { ActivatedRoute, NavigationExtras, Router } from '@angular/router';
 import { MenuController } from '@ionic/angular';
 import { Observable } from 'rxjs';
 import { SqliteService } from 'src/app/services/sqlite.service';
 import { Usuario } from 'src/app/services/usuario';
+import { GoogleMap } from '@capacitor/google-maps';
 
 declare var google;
 
-const apiKey = 'AIzaSyBjdhmIFt0j7ibkLkmOxQqJUzIEdR5WvvQ';
+const apiKey = 'AIzaSyCS-2JaoMD350XXYsGk8zyWza9N0rHpf54';
 
 @Component({
   selector: 'app-pagina-principal',
@@ -16,12 +18,16 @@ const apiKey = 'AIzaSyBjdhmIFt0j7ibkLkmOxQqJUzIEdR5WvvQ';
 })
 
 export class PaginaPrincipalPage implements OnInit, AfterContentInit {
-  map;
-  @ViewChild('mapElement') mapElement;
+
+  @ViewChild('map')mapRef: ElementRef;
+  map: GoogleMap;
+
   user: Usuario;
+  mapa!: google.maps.Map;
+  markers: google.maps.Marker[];
 
   constructor(private menuController: MenuController, private renderer: Renderer2,  private router: Router, private activedRouter: ActivatedRoute, private wayplaceDB: SqliteService) {
-    
+    this.markers = [];
     this.activedRouter.queryParams.subscribe(params =>{
       if(this.router.getCurrentNavigation().extras.state){
         this.user = this.router.getCurrentNavigation().extras.state.user;
@@ -57,18 +63,20 @@ export class PaginaPrincipalPage implements OnInit, AfterContentInit {
     console.log("btn Clicked");
     alert("THE GAME")
   }
-  
-  ngAfterContentInit(): void{
-    this.map = new google.maps.Map(
-      this.mapElement.nativeElement,{
-        center: {
-          lat: -34.397,
-          lng: 150.644
-        },
-        zoom: 8
-    });
 
+  ngAfterContentInit(): void{
+    
+    /*if (navigator.geolocation){
+      Geolocation.getCurrentPosition().then((r) => {
+        this.cargarMapa(r);
+      })
+    }else{
+      console.log("Error con la Geolocalización!!");
+    }
+    */
+    
   }
+
   ngOnInit() {
   }
 

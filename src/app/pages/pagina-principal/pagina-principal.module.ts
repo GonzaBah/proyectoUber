@@ -9,6 +9,7 @@ import { IonicModule } from '@ionic/angular';
 import { PaginaPrincipalPageRoutingModule } from './pagina-principal-routing.module';
 
 import { PaginaPrincipalPage } from './pagina-principal.page';
+import { GooglemapsComponent } from 'src/app/googlemaps/googlemaps.component';
 
 @NgModule({
   schemas: [CUSTOM_ELEMENTS_SCHEMA],
@@ -18,6 +19,9 @@ import { PaginaPrincipalPage } from './pagina-principal.page';
     IonicModule,
     PaginaPrincipalPageRoutingModule,
     MatProgressSpinnerModule
+  ],
+  providers: [
+    GooglemapsComponent
   ],
   declarations: [PaginaPrincipalPage]
 })

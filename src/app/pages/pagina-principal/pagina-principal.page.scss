@@ -1,13 +1,15 @@
 ion-menu{
     --width: 500px;
 }
-.map {
-    height: 100%;
-  }
+
 ion-content{
     --ion-background-color:#ffffff;
     font-size: large; 
     font-family:'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+    #map {
+        width: 500px;
+      }
+
     .item-input ion-label{
         pointer-events:all!important;
       }
@@ -27,9 +29,6 @@ ion-content{
         overflow: hidden;
         
         
-    }
-    #map {
-        height: 100%;
     }
     /*ion-img{
         width: 90%;
@@ -78,7 +77,7 @@ ion-content{
 
     
     .textubc{
-        background-color: rgba(26, 26, 26, 0.808);
+        background-color: rgba(0, 0, 0, 0.743);
         border-radius: 5px;
         height: 28px;
         box-shadow: 0px 3px 6px rgba(255, 255, 255, 0.2);

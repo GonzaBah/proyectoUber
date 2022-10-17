@@ -3,6 +3,7 @@ import { ActivatedRoute, NavigationExtras, Router } from '@angular/router';
 import { MenuController } from '@ionic/angular';
 import { Category } from 'src/app/models/category.model';
 import { Auto } from 'src/app/services/auto';
+import { CamaraApiService } from 'src/app/services/camara-api.service';
 import { SqliteService } from 'src/app/services/sqlite.service';
 import { Usuario } from 'src/app/services/usuario';
 
@@ -18,7 +19,7 @@ export class PerfilPage implements OnInit {
   user: Usuario;
   arrayAuto: Auto[];
 
-  constructor(private router: Router, private activedRouter: ActivatedRoute, private wayplaceDB: SqliteService) {
+  constructor(private router: Router, private activedRouter: ActivatedRoute, private wayplaceDB: SqliteService, private camara: CamaraApiService) {
     this.activedRouter.queryParams.subscribe(params =>{
       if(this.router.getCurrentNavigation().extras.state){
         this.user = this.router.getCurrentNavigation().extras.state.user;

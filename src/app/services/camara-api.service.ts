@@ -21,12 +21,12 @@ export class CamaraApiService {
 
     this.camera.getPicture(options).then((imageData) => {
       this.base64Image = 'data:image/jpeg;base64,' + imageData;
+      console.log("FOTO: " + this.base64Image);
       this.camaraObs.next(this.base64Image);
      }, (err) => {   
      });
  
   }
-
   fetchFoto(): Observable<any>{
     return this.camaraObs.asObservable();
 

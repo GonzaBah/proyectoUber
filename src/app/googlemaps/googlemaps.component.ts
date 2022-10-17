@@ -4,7 +4,7 @@ import { GooglemapsService } from './googlemaps.service';
 import { ModalController } from '@ionic/angular';
 
 import { Plugins } from '@capacitor/core';
-const {Geolocation} = Plugins;
+const { Geolocation } = Plugins;
 
 
 
@@ -12,23 +12,23 @@ declare var google: any;
 
 
 @Component({
-  selector: 'google-maps',
-  templateUrl: './googlemaps.component.html',
-  styleUrls: ['./googlemaps.component.scss']
+      selector: 'google-maps',
+      templateUrl: './googlemaps.component.html',
+      styleUrls: ['./googlemaps.component.scss']
 })
 export class GooglemapsComponent implements OnInit {
 
 
       // coordenadas cuenca
-      @Input() position = {  
+      @Input() position = {
             lat: -2.898116,
             lng: -78.99958149999999
       };
 
       label = {
-            titulo:'Ubicación',
+            titulo: 'Ubicación',
             subtitulo: 'Mi ubicación de envío'
-      } 
+      }
 
       map: any;
       marker: any;
@@ -39,9 +39,9 @@ export class GooglemapsComponent implements OnInit {
 
 
       constructor(private renderer: Renderer2,
-                  @Inject(DOCUMENT) private document,
-                  private googlemapsService: GooglemapsService,
-                  public modalController: ModalController) { }
+            @Inject(DOCUMENT) private document,
+            private googlemapsService: GooglemapsService,
+            public modalController: ModalController) { }
 
       ngOnInit(): void {
             this.init();
@@ -51,16 +51,13 @@ export class GooglemapsComponent implements OnInit {
 
       async init() {
 
-            this.googlemapsService.init(this.renderer, this.document).then( () => {
+            this.googlemapsService.init(this.renderer, this.document).then(() => {
                   this.initMap();
-            }).catch( (err) => {    
+            }).catch((err) => {
                   console.log(err);
             });
-            
+
       }
-
-
-
 
       initMap() {
 
@@ -89,7 +86,6 @@ export class GooglemapsComponent implements OnInit {
       }
 
       clickHandleEvent() {
-
             this.map.addListener('click', (event: any) => {
                   const position = {
                         lat: event.latLng.lat(),
@@ -115,15 +111,15 @@ export class GooglemapsComponent implements OnInit {
 
       setInfoWindow(marker: any, titulo: string, subtitulo: string) {
 
-            const contentString  =  '<div id="contentInsideMap">' +
-                                    '<div>' +
-                                    '</div>' +
-                                    '<p style="font-weight: bold; margin-bottom: 5px;">' + titulo + '</p>' +
-                                    '<div id="bodyContent">' +
-                                    '<p class"normal m-0">'
-                                    + subtitulo + '</p>' +
-                                    '</div>' +
-                                    '</div>';
+            const contentString = '<div id="contentInsideMap">' +
+                  '<div>' +
+                  '</div>' +
+                  '<p style="font-weight: bold; margin-bottom: 5px;">' + titulo + '</p>' +
+                  '<div id="bodyContent">' +
+                  '<p class"normal m-0">'
+                  + subtitulo + '</p>' +
+                  '</div>' +
+                  '</div>';
             this.infowindow.setContent(contentString);
             this.infowindow.open(this.map, marker);
 
@@ -131,25 +127,27 @@ export class GooglemapsComponent implements OnInit {
 
       async mylocation() {
 
-      console.log('mylocation() click')
+            console.log('mylocation() click')
 
-      Geolocation.getCurrentPosition().then((res) => {
+            Geolocation.getCurrentPosition().then((res) => {
 
-            console.log('mylocation() -> get ', res);
+                  console.log('mylocation() -> get ', res);
 
-            const position = {
-                  lat: res.coords.latitude,
-                  lng: res.coords.longitude,
-            }
-            this.addMarker(position);
+                  const position = {
+                        lat: res.coords.latitude,
+                        lng: res.coords.longitude,
+                  }
+                  this.addMarker(position);
 
-      });
+            });
 
       }
 
       aceptar() {
             console.log('click aceptar -> ', this.positionSet);
-            this.modalController.dismiss({pos: this.positionSet})
+            this.modalController.dismiss({ pos: this.positionSet })
+
+            console.log("Posicion Guardada: "+ this.positionSet);
       }
 
 }
