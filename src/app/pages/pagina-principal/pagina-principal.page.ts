@@ -3,7 +3,13 @@ import { ActivatedRoute, NavigationExtras, Router } from '@angular/router';
 import { MenuController } from '@ionic/angular';
 import { Observable } from 'rxjs';
 import { CamaraApiService } from 'src/app/services/camara-api.service';
+///<reference path="../../../../node_modules/@types/googlemaps/index.d.ts"/>
+import { FormControl, FormGroup } from '@angular/forms'
+import { ElementRef, ViewChild, Renderer2 } from '@angular/core'
+import { Geolocation } from '@awesome-cordova-plugins/geolocation/ngx';
+import { alertController } from '@ionic/core';
 
+declare var google: any;
 @Component({
   selector: 'app-pagina-principal',
   templateUrl: './pagina-principal.page.html',
@@ -18,9 +24,16 @@ export class PaginaPrincipalPage implements OnInit {
   f: string = "";
   r: string = "";
   fe: string = "";
+
+  @ViewChild('divMap') divMap!: ElementRef;
+
+  mapa!: google.maps.Map;
+  markers: google.maps.Marker[];
   
   constructor(private menuController: MenuController, private router: Router, private activedRouter: ActivatedRoute, 
-    public photo: CamaraApiService,) {
+    public photo: CamaraApiService, private renderer: Renderer2, private GeoLocalizacion: Geolocation) {
+      this.markers = [];
+
     this.activedRouter.queryParams.subscribe(params =>{
       if(!this.router.getCurrentNavigation().extras.state.user && this.router.getCurrentNavigation().extras.state.afil){
         this.a = this.router.getCurrentNavigation().extras.state.afil;
@@ -76,5 +89,36 @@ export class PaginaPrincipalPage implements OnInit {
 
   ngOnInit() {
   }
+
+
+  cargarMapa(position: any): any {
+
+    const opciones = {
+      center: new google.maps.LatLng(position.coords.latitude, position.coords.longitude),
+      zoom: 12,
+      mapTypeId: google.maps.MapTypeId.ROADMAP
+    };
+
+    this.mapa = new google.maps.Map(this.renderer.selectRootElement(this.divMap.nativeElement), opciones)
+
+    const markerPosition = new google.maps.Marker({
+      position: this.mapa.getCenter(),
+      title: "🥵",
+    });
+
+    markerPosition.setMap(this.mapa);
+    this.markers.push(markerPosition);
+  };
+
+  ngAfterViewInit(): void {
+
+    this.GeoLocalizacion.getCurrentPosition().then((r) => {
+
+      this.cargarMapa(r)
+
+      // this.Autocompleto()
+
+    })
+  };
 
 }
