@@ -106,6 +106,10 @@ const routes: Routes = [
     path: 'api-rutas2',
     loadChildren: () => import('./pages/api-rutas2/api-rutas2.module').then( m => m.ApiRutas2PageModule)
   },
+  {
+    path: 'comentario',
+    loadChildren: () => import('./pages/comentario/comentario.module').then( m => m.ComentarioPageModule)
+  },
 
 
 

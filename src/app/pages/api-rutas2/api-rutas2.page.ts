@@ -1,15 +1,10 @@
 ///<reference path="../../../../node_modules/@types/googlemaps/index.d.ts"/>
-declare var google: any;
 
-declare global {
-  interface Window {
-    initMap: () => void;
-  }
-}
 import { Component, OnInit } from '@angular/core';
 import { FormControl, FormGroup } from '@angular/forms'
 import { ElementRef, ViewChild, Renderer2 } from '@angular/core'
 import { Geolocation } from '@awesome-cordova-plugins/geolocation/ngx';
+import { alertController } from '@ionic/core';
 @Component({
   selector: 'app-api-rutas2',
   templateUrl: './api-rutas2.page.html',
@@ -51,14 +46,64 @@ export class ApiRutas2Page implements OnInit {
 
       this.cargarMapa(r)
 
-      this.Autocompleto()
+      // this.Autocompleto()
 
-    })
+    }).catch(async (error) => {
+      const alert = await alertController.create({
+        message: 'Se necesita activar la ubicación del dispositivo',
+      });
+      await alert.present();
+      console.log('Error', error);
+    });
+
+    const opciones = {
+      enableHighAccuracy: true,
+      timeout: 5000,
+      maximumAge: 0
+    }
+
+    if (navigator.geolocation) {
+
+      navigator.geolocation.getCurrentPosition(async (position) => {
+
+        await this.cargarMapa(position);
+        this.cargarAutocomplete();
+
+      }, null, opciones);
+
+
+    } else {
+      console.log("navegador no compatible")
+    }
 
   };
 
+  //Autocomplete google
+
+  // Autocompleto(){
+
+  //   let origen = (document.getElementById('origin-input') as HTMLInputElement).value;
+  //   let destineishon = (document.getElementById('destination-input') as HTMLInputElement).value;
+
+  //   const originAutocomplete = new google.maps.places.Autocomplete(
+  //     origen,
+  //     { fields: ["place_id"] }
+  //   );
+
+  //   // Specify just the place data fields that you need.
+  //   const destinationAutocomplete = new google.maps.places.Autocomplete(
+  //     destineishon,
+  //     { fields: ["place_id"] }
+  //   );
+
+  //   this.setupPlaceChangedListener(originAutocomplete, "ORIG");
+  //   this.setupPlaceChangedListener(destinationAutocomplete, "DEST");
 
 
+  // }
+
+
+  //Autocomplete tutorial
   private cargarAutocomplete() {
 
     const autocomplete = new google.maps.places.Autocomplete(this.renderer.selectRootElement(this.inputPlaces.nativeElement), {
@@ -82,36 +127,9 @@ export class ApiRutas2Page implements OnInit {
 
       marker.setMap(this.mapa);
     })
-  } 
-
-  Autocompleto(){
-
-    let origen: any = (document.getElementById('origin-input') as HTMLInputElement).value;
-    let destineishon: any = (document.getElementById('destination-input') as HTMLInputElement).value;
-
-    const originAutocomplete = new google.maps.places.Autocomplete(
-      origen,
-      { fields: ["place_id"] }
-    );
-
-    // Specify just the place data fields that you need.
-    const destinationAutocomplete = new google.maps.places.Autocomplete(
-      destineishon,
-      { fields: ["place_id"] }
-    );
-
-    this.setupPlaceChangedListener(originAutocomplete, "ORIG");
-    this.setupPlaceChangedListener(destinationAutocomplete, "DEST");
-
-
   }
 
 
-
-
-  onSubmit() {
-    console.log("Datos del formulario: ")
-  };
 
   //calcular ruta
   mapRuta() {
@@ -138,7 +156,6 @@ export class ApiRutas2Page implements OnInit {
 
 
 
- 
 
 
 

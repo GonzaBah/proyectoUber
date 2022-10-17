@@ -1,0 +1,41 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-title>App</ion-title>
+  </ion-toolbar>
+</ion-header>
+<ion-content class="ion-padding">
+  <ion-button id="open-modal" expand="block">Open Modal</ion-button>
+
+  <ion-modal #modal trigger="open-modal">
+    <ng-template>
+      <ion-content>
+        <ion-toolbar>
+          <ion-title >Antes de irte</ion-title>
+          
+        </ion-toolbar>
+        <ion-list>
+          <ion-item>
+
+            <ion-label>
+              <h2 style="margin-bottom: 0px; padding-bottom: 0px;">¿Qué tal fue tu viaje?</h2>
+              <ion-textarea class="custom-textarea" placeholder="Comenta aquí"></ion-textarea>
+            </ion-label>
+          </ion-item>
+        </ion-list>
+
+        
+        
+
+        <ion-toolbar color="dark">
+          <ion-buttons slot="start">
+            <ion-button  color="light" (click)="cancel()"><ion-icon name="arrow-back-outline"></ion-icon></ion-button>
+          </ion-buttons>
+          <ion-buttons slot="end">
+            <ion-button color="light" (click)="cancel()">Enviar</ion-button>
+          </ion-buttons>
+        </ion-toolbar>
+
+      </ion-content>
+    </ng-template>
+  </ion-modal>
+</ion-content>

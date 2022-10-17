@@ -8,18 +8,16 @@ import { GooglemapsComponent } from 'src/app/googlemaps/googlemaps.component';
   templateUrl: './configuracion.page.html',
   styleUrls: ['./configuracion.page.scss'],
 })
-export class ConfiguracionPage implements OnInit {
+export class ConfiguracionPage {
 
   cliente: Cliente = {
     ubicacion: null,
   };
   
   
-  constructor(private modalController:  ModalController, private gugu: GooglemapsComponent) { }
+  constructor(private modalController:  ModalController) { }
 
-  ngOnInit() {
-    this.gugu.mapInit();
-  }
+
 
   async addDirection(){
     
