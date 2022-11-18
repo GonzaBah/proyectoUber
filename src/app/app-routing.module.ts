@@ -1,6 +1,7 @@
 
 import { NgModule } from '@angular/core';
 import { PreloadAllModules, RouterModule, Routes } from '@angular/router';
+import { MapaComponent } from './components/mapa/mapa.component';
 
 
 
@@ -87,6 +88,15 @@ const routes: Routes = [
     path: 'api-rutas2',
     loadChildren: () => import('./pages/api-rutas2/api-rutas2.module').then( m => m.ApiRutas2PageModule)
   },
+  {
+    path: 'mapagoogle', component: MapaComponent,
+    loadChildren: () => import('./pages/mapagoogle/mapagoogle.module').then( m => m.MapagooglePageModule)
+  },  {
+    path: 'apirestxd',
+    loadChildren: () => import('./pages/apirestxd/apirestxd.module').then( m => m.ApirestxdPageModule)
+  },
+
+
 
 
 

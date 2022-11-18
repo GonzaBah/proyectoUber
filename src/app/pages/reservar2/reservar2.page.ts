@@ -17,6 +17,7 @@ export class Reservar2Page implements OnInit {
 
   ngOnInit(): void {
     this.api.getUsers().subscribe((rrr)=>{
+      console.log(rrr)
       this.users=rrr;
     },(error)=>{
       console.log(error);
@@ -24,6 +25,7 @@ export class Reservar2Page implements OnInit {
 
     this.api.getAutos().subscribe((res)=>{
       this.autos=res;
+      console.log(res.marca)
       },(error)=>{
       console.log(error);
       })

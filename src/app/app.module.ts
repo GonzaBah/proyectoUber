@@ -13,11 +13,11 @@ import { Camera } from '@awesome-cordova-plugins/camera/ngx';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { Geolocation } from '@awesome-cordova-plugins/geolocation/ngx';
 import { NativeGeocoder } from '@ionic-native/native-geocoder/ngx';
-
+import { MapaComponent } from './components/mapa/mapa.component';
 
 
 @NgModule({
-  declarations: [AppComponent],
+  declarations: [AppComponent, MapaComponent],
   imports: [BrowserModule, IonicModule.forRoot(), AppRoutingModule, HttpClientModule, ReactiveFormsModule, FormsModule],
   providers: [{ provide: RouteReuseStrategy, useClass: IonicRouteStrategy }, 
     SQLite, Camera, Geolocation, NativeGeocoder
