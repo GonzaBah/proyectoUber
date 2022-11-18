@@ -1,0 +1,70 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-title></ion-title>
+    <ion-buttons slot="start">
+      <ion-back-button></ion-back-button>
+    </ion-buttons>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <ion-button id="open-modal" expand="block">Dejar comentario</ion-button>
+
+  <ion-modal #modal trigger="open-modal">
+    <ng-template>
+      <ion-content>
+        <ion-toolbar>
+          <ion-title >Cuéntanos tu experiencia</ion-title>
+          
+        </ion-toolbar>
+        <ion-list>
+          <ion-item>
+
+            <ion-label>
+              <h2 style="margin-bottom: 0px; padding-bottom: -5px;">¿Qué tal fue tu viaje?</h2>
+              <ion-textarea class="custom-textarea" placeholder="Comenta aquí"></ion-textarea>
+              <ion-select [(ngModel)]="viaje" placeholder="Selecciona un Viaje" >
+                <ion-select-option *ngFor="let i of arrayViaje" value="{{ i.idviaje }}">{{ i.salida }} - {{ i.fechaViaje }}</ion-select-option>
+              </ion-select>
+            </ion-label>
+          </ion-item>
+        </ion-list>
+
+        
+        
+
+        <ion-toolbar color="dark">
+          <ion-buttons slot="start">
+            <ion-button  color="light" (click)="cancel()"><ion-icon name="arrow-back-outline"></ion-icon></ion-button>
+          </ion-buttons>
+          <ion-buttons slot="end">
+            <ion-button color="light" (click)="cancel()">Enviar</ion-button>
+          </ion-buttons>
+        </ion-toolbar>
+
+      </ion-content>
+    </ng-template>
+  </ion-modal>
+
+  <div class="content">
+    <ion-list>
+      <ion-list-header style="font-size: 20px;"> Historial de viajes </ion-list-header>
+
+      <ion-item *ngFor="let i of arrayViaje">
+        <ion-avatar slot="start">
+          <img src="assets\images\noperfil.jpg" />
+        </ion-avatar>
+        <ion-label>
+          <p style="font-size: 14px;">{{ i.salida }}</p>
+          <p style="display: flex; font-size: 11px;">{{ i.fechaViaje }} - {{ i.horaSalida }}</p>
+          
+        </ion-label>
+
+        <ion-label slot="end"><p>{{ i.monto|currency}}</p></ion-label>
+
+      </ion-item>
+    </ion-list>
+  </div>
+
+
+</ion-content>

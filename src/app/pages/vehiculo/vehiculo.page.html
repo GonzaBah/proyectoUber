@@ -1,0 +1,56 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-back-button></ion-back-button>
+    </ion-buttons>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <ion-list lines="full" class="ion-no-margin">
+    <ion-card>
+      <ion-label style="padding-left: 40px">Marca</ion-label>
+      <ion-card-content>
+        <ion-label *ngIf="varEd">{{ marca }}</ion-label>
+        <ion-select *ngIf="!varEd" placeholder="Selecciona una Marca" id="marcaEd">
+          <ion-select-option *ngFor="let i of arrayMarcas" value="{{ i.idmarca }}">{{ i.nombreMarca }}</ion-select-option>
+        </ion-select>
+      </ion-card-content>
+    </ion-card>
+    <ion-card lines="full" class="ion-no.margin">
+      <ion-label style="padding-left: 40px">Modelo</ion-label>
+      <ion-card-content>
+        <ion-label *ngIf="varEd">{{ auto.modelo }}</ion-label>
+        <ion-input *ngIf="!varEd" value="{{ auto.modelo }}" type="text" id="modeloEd"></ion-input>
+      </ion-card-content>
+    </ion-card>
+    <ion-card lines="full" class="ion-no.margin">
+      <ion-label style="padding-left: 40px">Color</ion-label>
+      <ion-card-content>
+        <ion-label *ngIf="varEd">{{ auto.color }}</ion-label>
+        <ion-input *ngIf="!varEd" value="{{ auto.color }}" type="text" id="colorEd"></ion-input>
+      </ion-card-content>
+    </ion-card>
+    <ion-card lines="full" class="ion-no.margin">
+      <ion-label style="padding-left: 40px">Año</ion-label>
+      <ion-card-content>
+        <ion-label *ngIf="varEd">{{ auto.annio }}</ion-label>
+        <ion-input *ngIf="!varEd" value="{{ auto.annio }}" type="number" id="annioEd"></ion-input>
+      </ion-card-content>
+    </ion-card>
+    <ion-card lines="full" class="ion-no.margin">
+      <ion-label style="padding-left: 40px">Patente</ion-label>
+      <ion-card-content>
+        <ion-label *ngIf="varEd">{{ auto.patente }}</ion-label>
+        <ion-input *ngIf="!varEd" value="{{ auto.patente }}" type="text" id="patenteEd"></ion-input>
+      </ion-card-content>
+    </ion-card>
+
+    <ion-button color="dark" *ngIf="varEd" (click)="editarVeh()" slot="start">Editar Vehiculo</ion-button>
+    <ion-button color="dark" *ngIf="!varEd" (click)="confirmEdit()" slot="start">Aplicar</ion-button>
+  </ion-list>
+  
+  
+  
+  
+</ion-content>

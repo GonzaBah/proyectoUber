@@ -1,0 +1,38 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-title>apiRutas</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  
+  
+ 
+  <form [formGroup]="formMapa"  (ngSubmit)="route()" >
+    <div>
+    <input 
+        id="origin-input"
+        class="controls"
+        type="text"
+        placeholder="Enter an origin location"
+        formControlName="origineishon"
+      />
+
+  <input
+        id="destination-input"
+        class="controls"
+        type="text"
+        placeholder="Enter a destination location"
+        formControlName="destineishon"
+      />
+    </div>
+
+    
+      <div id="map"></div>
+  
+  </form>
+
+  <ion-button class="boton1" size="default" expand="block" (click)="calculateRoute()">Calcular ruta</ion-button>
+  
+
+</ion-content>

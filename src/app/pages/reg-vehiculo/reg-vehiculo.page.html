@@ -1,0 +1,52 @@
+
+<ion-content>
+  <ion-list style="margin-top: 45px" lines="full" class="ion-no-margin">
+    <ion-card class="card1">
+      <ion-label>Agrega un vehículo para registrarte como conductor</ion-label>
+    </ion-card>
+    <ion-card lines="full" class="ion-no.margin">
+      <ion-card-content>
+        <ion-select [(ngModel)]="marca" placeholder="Selecciona una Marca" >
+          <ion-select-option *ngFor="let i of arrayMarca" value="{{ i.idmarca }}">{{ i.nombreMarca }}</ion-select-option>
+        </ion-select>
+      </ion-card-content>
+    </ion-card>
+    <ion-card lines="full" class="ion-no.margin">
+      <ion-card-content>
+        <ion-input [(ngModel)]="modelo" placeholder="Modelo" type="text"></ion-input>
+      </ion-card-content>
+    </ion-card>
+    <ion-card lines="full" class="ion-no.margin">
+      <ion-card-content>
+        <ion-input [(ngModel)]="color" placeholder="Color" type="text"></ion-input>
+      </ion-card-content>
+    </ion-card>
+    <ion-card lines="full" class="ion-no.margin">
+      <ion-card-content>
+        <ion-input [(ngModel)]="annio" placeholder="Año" type="text"></ion-input>
+      </ion-card-content>
+    </ion-card>
+    <ion-card lines="full" class="ion-no.margin">
+      <ion-card-content>
+        <ion-input [(ngModel)]="patente" placeholder="Patente" type="text"></ion-input>
+      </ion-card-content>
+    </ion-card>
+  </ion-list>
+  
+  <center>
+    <ion-row>
+      <ion-col>
+        <ion-checkbox></ion-checkbox>
+      </ion-col>
+      <ion-col size="10">
+        <ion-label>Aceptar los <a href="">Lineamiento de Conductor</a></ion-label>
+      </ion-col>
+    </ion-row>
+    
+    
+    <br>  
+    <ion-button color="dark" shape="round" (click)="registrarVeh()">Registrar Vehiculo</ion-button>
+    <mat-spinner *ngIf="varProg == 1" [diameter]="45" style="margin-top: 20px"></mat-spinner>
+  </center>
+  
+</ion-content>
